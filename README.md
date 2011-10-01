@@ -9,7 +9,7 @@ This version is available in Englisch, German and Italian at the moment. I hope 
 * German (de_DE) - [Dennis Ploetner](http://www.urlaub-und-reisen.net/)
 * Italian (it_IT) - [Antonella Cucinelli](http://www.freely.de/)
 
-## Installation ==
+## Installation
 
 * Download the plugin
 * uncompress it with your preferred unzip programme
