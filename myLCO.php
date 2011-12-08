@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: myLCO
-Plugin URI: http://link-check.org/
+Plugin URI: http://lloc.de/wp-plugin-mylco
 Description: Maintain and verify the backlinks to your sites pointing from the linking pages of your link-exchange-partners
-Version: 0.6
+Version: 0.7
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: myLCO

@@ -3,8 +3,8 @@ Contributors: realloc
 Donate link: http://www.greenpeace.org/international/
 Tags: myLCO, backlinks, links, check, seo
 Requires at least: 2.8
-Tested up to: 3.0-beta2
-Stable tag: 0.6
+Tested up to: 3.3
+Stable tag: 0.7
 
 Maintain and verify the backlinks to your sites pointing from the linking pages of your link-exchange-partners
 
@@ -30,9 +30,12 @@ I hope to find some kind people who will translate the plugin in other languages
 
 == Changelog ==
 
+= 0.7 =
+* update of 3th party library: PHP Simple HTML DOM Parser
+
 = 0.6 =
-* translation for Italian
+* added translation file for Italian
 * alexa ranking of the project-links
 * improvement of the pr-functions
 
-[History](http://link-check.org/#history)
+[History](http://lloc.de/wp-plugin-mylco#history)
