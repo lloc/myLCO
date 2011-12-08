@@ -214,14 +214,14 @@ if (!class_exists (_MYLCO_)) {
                 $this->bookmarks = array ();
                 $bookmarks = get_bookmarks ($this->options->get ());
                 foreach ($bookmarks as $bookmark) {
-                    $this->bookmarks[$bookmark->link_id] = new myLCObookmark ($bookmark);
+                    $this->bookmarks[$bookmark->link_id] = new MyLCObookmark ($bookmark);
                 }
             }
             return $this->bookmarks;
         }
 
         function main () {
-            require_once (dirname (__FILE__) . '/include/myLCOresource.php');
+            require_once (dirname (__FILE__) . '/include/MyLCOresource.php');
 
             $tpage = new myLCOtemplate ('page.php');
             $smenu = new myLCOsubmenu ();
@@ -243,7 +243,7 @@ if (!class_exists (_MYLCO_)) {
                 $alexa->clean ();
                 foreach ($bookmarks as $bookmark) {
                     $temp .= sprintf (
-                        myLCObookmark::tr,
+                        MyLCObookmark::tr,
                         $bookmark->link_id,
                         __ ('Edit the backlinks of that project...', _MYLCO_),
                         $bookmark->link_url,
@@ -267,7 +267,7 @@ if (!class_exists (_MYLCO_)) {
         }
 
         function edit () {
-            require_once (dirname (__FILE__) . '/include/myLCOresource.php');
+            require_once (dirname (__FILE__) . '/include/MyLCOresource.php');
 
             $tpage = new myLCOtemplate ('page.php');
             $smenu = new myLCOsubmenu (1);
@@ -312,7 +312,7 @@ if (!class_exists (_MYLCO_)) {
 
                     $ipcounter = array ();
                     $i = 0;
-                    $icon = new myLCOicon (PLUGINDIR . '/' . dirname (plugin_basename (__FILE__)));
+                    $icon = new MyLCOicon (PLUGINDIR . '/' . dirname (plugin_basename (__FILE__)));
                     $pr = new myLCOpr ();
                     $pr->clean ();
                     $trow = new myLCOtemplate ('row.php');
@@ -326,12 +326,12 @@ if (!class_exists (_MYLCO_)) {
                         $trow->reset ();
                         $trow->hnum = $i;
                         $trow->alternate_class = ($backlink->is_details () ? ' class="alternate"' : '');
-                        $trow->backlink_url = $backlink->getURL ();
-                        $trow->backlink_pr = $pr->get ($backlink->getURL ());
+                        $trow->backlink_url = $backlink->get_url ();
+                        $trow->backlink_pr = $pr->get ($backlink->get_url ());
                         $trow->backlink_text = $backlink->link;
-                        $trow->backlink_ip = $backlink->getIP ();
+                        $trow->backlink_ip = $backlink->get_ip ();
                         $trow->backlink_icon = $icon->get ($backlink);
-                        $trow->backlink_checkdate = $backlink->getCheckdate ();
+                        $trow->backlink_checkdate = $backlink->get_checkdate ();
                         $trow->contact_name = $backlink->contact_name;
                         $trow->contact_email = $backlink->contact_email;
                         $trow->contact_remarks = $backlink->contact_remarks;
@@ -340,11 +340,11 @@ if (!class_exists (_MYLCO_)) {
                         } else {
                             $trow->Kemail = __ ('E-mail', _MYLCO_);
                         }
-                        $trow->DeleteMessage = sprintf (__ ('Do you really want to delete %s? Please click on OK to continue, or CANCEL if you are not sure!', _MYLCO_), $backlink->getURL ());
+                        $trow->DeleteMessage = sprintf (__ ('Do you really want to delete %s? Please click on OK to continue, or CANCEL if you are not sure!', _MYLCO_), $backlink->get_url ());
                         $temp .= $trow->get ();
 
                         $i++;
-                        $ipcounter[$backlink->getIP ()] = 1;
+                        $ipcounter[$backlink->get_ip ()] = 1;
                     }
                     $tbody->content = $temp;
                     if (1 == $i) {
