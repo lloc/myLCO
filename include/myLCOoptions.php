@@ -7,6 +7,7 @@ class MyLCOoptions {
         'category_name' => 'myLCO',
         'hide_invisible' => 0,
         'orderby' => 'url',
+        'api_key' => '',
     );
 
     public function __construct() {
@@ -34,6 +35,7 @@ class MyLCOoptions {
         return array(
             'category_name' => $this->__get( 'category_name' ),
             'hide_invisible' => $this->__get( 'hide_invisible' ),
+            'api_key' => $this->__get( 'api_key' ),
         );
     }
 
