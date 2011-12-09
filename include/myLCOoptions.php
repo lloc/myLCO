@@ -1,103 +1,171 @@
 <?php
 
-class myLCOoptions {
+class MyLCOoptions {
 
     protected $option_name = '_myLCO';
-    protected $params = array (
+    protected $params = array(
         'category_name' => 'myLCO',
         'hide_invisible' => 0,
         'orderby' => 'url',
     );
 
-    function __construct () {
-        $arr = get_option ($this->option_name);
-        if (is_array ($arr)) {
-            foreach ($arr as $key => $value) {
-                $this->__set ($key, $value);
+    public function __construct() {
+        $arr = get_option( $this->option_name );
+        if ( is_array( $arr ) ) {
+            foreach ( $arr as $key => $value ) {
+                $this->__set( $key, $value );
             }
         }
     }
 
-    function __get ($key) {
-        return (isset ($this->params[$key]) ? $this->params[$key] : NULL);
-    }
-
-    function __set ($key, $value) {
-        $this->params[$key] = $value;
-    }
-
-    function get () {
-        return array (
-            'category_name' => $this->__get ('category_name'),
-            'hide_invisible' => $this->__get ('hide_invisible'),
+    public function __get( $key ) {
+        return(
+            isset( $this->params[$key] ) ?
+            $this->params[$key] :
+            null
         );
     }
 
-    function update () {
-        update_option ($this->option_name, $this->params);
+    public function __set( $key, $value ) {
+        $this->params[$key] = $value;
+    }
+
+    public function get() {
+        return array(
+            'category_name' => $this->__get( 'category_name' ),
+            'hide_invisible' => $this->__get( 'hide_invisible' ),
+        );
+    }
+
+    public function update() {
+        update_option( $this->option_name, $this->params );
     }
 
 }
 
-class myLCOpr extends myLCOoptions {
+class MyLCOwebinfoerr {
+
+    protected $transient = '_myLCO_webinfoerr';
+    protected $error     = true;
+
+    public function __construct() {
+        if ( false === ( $value = get_transient( $this->transient ) ) ) {
+            $this->error = false;
+        }
+    }
+
+    public function is_error() {
+        return $this->error;
+    }
+
+    public function check( $str ) {
+        if ( !$this->error ) {
+            switch ( $str ) {
+                case 'E:Too Busy. Try again in a few minutes.':
+                    $time = 3600;
+                    break;
+                case 'E:Limit Exceeded':
+                    $time = 86400;
+                    break;
+                default:
+                    $time = 0;
+            }
+            if ( $time > 0 ) {
+                set_transient( $this->transient, 1, $time );
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
+
+class MyLCOpr extends MyLCOoptions {
 
     protected $option_name = '_myLCO_pr';
-    protected $params = array ();
+    protected $params = array();
 
-    function __construct () {
-        $arr = get_option ($this->option_name);
-        if (is_array ($arr)) {
-            foreach ($arr as $key => $value) {
-                $this->__set ($key, $value);
+    public function __construct() {
+        $arr = get_option( $this->option_name );
+        if ( is_array( $arr ) ) {
+            foreach ( $arr as $key => $value ) {
+                $this->__set( $key, $value );
             }
-        } else {
-            add_option ($this->option_name, $this->params, ' ', 'no');
+        }
+        else {
+            add_option( $this->option_name, $this->params, ' ', 'no' );
         }
     }
 
-    function clean () {
-        $yesterday = time () - 86400;
-        foreach ($this->params as $key => $value) {
-            if ($yesterday > $value['time']) {
-                unset ($this->params[$key]);
+    public function clean() {
+        $yesterday = time() - 86400;
+        foreach ( $this->params as $key => $value ) {
+            if ( $yesterday > $value['time'] ) {
+                unset( $this->params[$key] );
             }
         }
     }
 
-    function set ($url) {
-        $arr = array ('pr' => 'N/A', 'time' => time ());
-        $result = wp_remote_get ("http://webinfodb.net/a/pr.php?url=" . urlencode ($url));
-        if (!is_wp_error ($result)) {
-            if ('200' == $result['response']['code']) {
-                $arr['pr'] = (int) $result['body'];
-                $this->__set ($url, $arr);
-                $this->update ();
+    public function set( $url, $key = '' ) {
+        $arr    = array(
+            'pr' => 'N/A',
+            'time' => time(),
+        );
+        if ( !empty( $key ) ) {
+            $result = wp_remote_get(
+                sprintf(
+                    'http://webinfodb.net/a/pr.php?key=%s&url=%s',
+                    $key,
+                    urlencode( $url )
+                )
+            );
+            if ( !is_wp_error( $result ) ) {
+                if ( '200' == $result['response']['code'] ) {
+                    $arr['pr'] = (int) $result['body'];
+                    $this->__set( $url, $arr );
+                    $this->update();
+                }
             }
         }
         return $arr['pr'];
     }
 
-    function get ($url) {
-        $result = $this->__get ($url);
-        return (isset ($result['pr']) ? $result['pr'] : '<img class="set_pr" src="/wp-admin/images/loading.gif" alt="' . $url . '" />');
+    function get( $url ) {
+        $result = $this->__get( $url );
+        return(
+            isset( $result['pr'] ) ?
+            $result['pr'] :
+            sprintf(
+                '<img class="set_pr" src="/wp-admin/images/loading.gif" alt="%s" />',
+                $url
+            )
+        );
     }
 
 }
 
-class myLCOalexa extends myLCOpr {
+class MyLCOalexa extends MyLCOpr {
 
     protected $option_name = '_myLCO_alexa';
 
-    function set ($url) {
-        $arr = array ('ranking' => '0', 'time' => time ());
-        $xml = @simplexml_load_file ("http://data.alexa.com/data?cli=10&dat=s&url=" . urlencode ($url));
-        if ($xml) {
-            if (isset ($xml->SD)) {
-                foreach ($xml->SD as $sd) {
-                    if (isset ($sd->POPULARITY['TEXT'])) {
+    public function set( $url ) {
+        $arr = array(
+            'ranking' => '0', 
+            'time' => time(),
+        );
+        $xml = simplexml_load_file(
+            sprintf(
+                'http://data.alexa.com/data?cli=10&dat=s&url=%s',
+                urlencode( $url )
+            )
+        );
+        if ( $xml ) {
+            if ( isset( $xml->SD ) ) {
+                foreach ( $xml->SD as $sd ) {
+                    if ( isset( $sd->POPULARITY['TEXT'] ) ) {
                         $arr['ranking'] = (int) $sd->POPULARITY['TEXT'];
-                        $this->__set ($url, $arr);
-                        $this->update ();
+                        $this->__set( $url, $arr );
+                        $this->update();
                         break;
                     }
                 }
@@ -106,9 +174,16 @@ class myLCOalexa extends myLCOpr {
         return $arr['ranking'];
     }
 
-    function get ($url) {
-        $result = $this->__get ($url);
-        return (isset ($result['ranking']) ? $result['ranking'] : '<img class="set_alexa" src="/wp-admin/images/loading.gif" alt="' . $url . '" />');
+    public function get( $url ) {
+        $result = $this->__get( $url );
+        return(
+            isset( $result['ranking'] ) ? 
+            $result['ranking'] : 
+            sprintf(
+                '<img class="set_alexa" src="/wp-admin/images/loading.gif" alt="%s" />',
+                $url
+            )
+        );
     }
 
 }
