@@ -410,6 +410,7 @@ if ( !class_exists( 'MyLCO' ) ) {
             $tpage->message = $msg->get();
             $tcontent                 = new MyLCOtemplate( 'options.php' );
             $tcontent->category_name  = $this->options->category_name;
+            $tcontent->api_key        = $this->options->api_key;
             $tcontent->hide_invisible = ( $this->options->hide_invisible == 1 ? ' checked="checked"' : '' );
             $tpage->content           = $tcontent->get();
             echo $tpage->get();
