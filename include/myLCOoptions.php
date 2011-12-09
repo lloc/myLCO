@@ -60,22 +60,20 @@ class MyLCOwebinfoerr {
         return $this->error;
     }
 
-    public function check( $str ) {
-        if ( !$this->error ) {
-            switch ( $str ) {
-                case 'E:Too Busy. Try again in a few minutes.':
-                    $time = 3600;
-                    break;
-                case 'E:Limit Exceeded':
-                    $time = 86400;
-                    break;
-                default:
-                    $time = 0;
-            }
-            if ( $time > 0 ) {
-                set_transient( $this->transient, 1, $time );
-                return false;
-            }
+    public function verify( $str ) {
+        switch ( $str ) {
+            case 'E:Too Busy. Try again in a few minutes.':
+                $time = 3600;
+                break;
+            case 'E:Limit Exceeded':
+                $time = 86400;
+                break;
+            default:
+                $time = 0;
+        }
+        if ( $time > 0 ) {
+            set_transient( $this->transient, 1, $time );
+            return false;
         }
         return true;
     }
@@ -108,24 +106,30 @@ class MyLCOpr extends MyLCOoptions {
         }
     }
 
-    public function set( $url, $key = '' ) {
-        $arr    = array(
+    public function set( $url ) {
+        $options = new MyLCOoptions();
+        $arr     = array(
             'pr' => 'N/A',
             'time' => time(),
         );
         if ( !empty( $key ) ) {
-            $result = wp_remote_get(
-                sprintf(
-                    'http://webinfodb.net/a/pr.php?key=%s&url=%s',
-                    $key,
-                    urlencode( $url )
-                )
-            );
-            if ( !is_wp_error( $result ) ) {
-                if ( '200' == $result['response']['code'] ) {
-                    $arr['pr'] = (int) $result['body'];
-                    $this->__set( $url, $arr );
-                    $this->update();
+            $err = new MyLCOwebinfoerr;
+            if ( !$err->is_error() && '' != $options->api_key ) {
+                $result = wp_remote_get(
+                    sprintf(
+                        'http://webinfodb.net/a/pr.php?key=%s&url=%s',
+                        $options->api_key,
+                        urlencode( $url )
+                    )
+                );
+                if ( !is_wp_error( $result ) ) {
+                    if ( '200' == $result['response']['code'] ) {
+                        if ( $err->verify( $result['body'] ) ) {
+                            $arr['pr'] = (int) $result['body'];
+                            $this->__set( $url, $arr );
+                            $this->update();
+                        }
+                    }
                 }
             }
         }
