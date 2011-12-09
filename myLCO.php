@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 if ( !class_exists( 'MyLCO' ) ) {
     define( '_MYLCO_', 'myLCO' );
 
-    require_once dirname( __FILE__ ) . '/include/MyLCOoptions.php';
+    require_once dirname( __FILE__ ) . '/include/myLCOoptions.php';
 
     class MyLCOtemplate {
     
@@ -235,7 +235,7 @@ if ( !class_exists( 'MyLCO' ) ) {
         }
 
         public function main() {
-            require_once dirname( __FILE__ ) . '/include/MyLCOresource.php';
+            require_once dirname( __FILE__ ) . '/include/myLCOresource.php';
             $tpage       = new MyLCOtemplate( 'page.php' );
             $smenu       = new MyLCOsubmenu();
             $tpage->menu = $smenu->get_ul();
@@ -282,7 +282,7 @@ if ( !class_exists( 'MyLCO' ) ) {
         }
 
         public function edit() {
-            require_once dirname( __FILE__ ) . '/include/MyLCOresource.php';
+            require_once dirname( __FILE__ ) . '/include/myLCOresource.php';
             $tpage       = new MyLCOtemplate( 'page.php' );
             $smenu       = new MyLCOsubmenu( 1 );
             $tpage->menu = $smenu->get_ul();
