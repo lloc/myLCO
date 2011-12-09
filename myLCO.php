@@ -398,6 +398,7 @@ if ( !class_exists( 'MyLCO' ) ) {
             if ( isset( $_REQUEST['save'] ) ) {
                 if ( !empty( $_REQUEST['category_name'] ) ) {
                     $this->options->category_name  = $_REQUEST['category_name'];
+                    $this->options->api_key  = $_REQUEST['api_key'];
                     $this->options->hide_invisible = ( isset( $_REQUEST['hide_invisible'] ) ? 1 : 0 );
                     $this->options->update();
                     $msg->text = __( 'Options succesfully saved.', _MYLCO_ );

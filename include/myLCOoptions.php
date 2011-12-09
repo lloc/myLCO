@@ -40,7 +40,6 @@ class MyLCOoptions {
     }
 
     public function update() {
-        print_r( $this->params );
         update_option( $this->option_name, $this->params );
     }
 
