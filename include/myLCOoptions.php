@@ -135,7 +135,7 @@ class MyLCOpr extends MyLCOoptions {
         return $arr['pr'];
     }
 
-    function get( $url ) {
+    public function get( $url ) {
         $result = $this->__get( $url );
         return(
             isset( $result['pr'] ) ?

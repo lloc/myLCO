@@ -291,7 +291,7 @@ if ( !class_exists( 'MyLCO' ) ) {
                 $tpage = $this->incomplete( $tpage );
             }
             else {
-                $link         = ( isset( $bookmarks[$_REQUEST['cl']] ) ? $bookmarks[$_REQUEST['cl']] : current( $bookmarks ) );
+                $link         = ( isset( $_REQUEST['cl'] ) && isset( $bookmarks[$_REQUEST['cl']] ) ? $bookmarks[$_REQUEST['cl']] : current( $bookmarks ) );
                 $tpage->title = sprintf(
                     '%s &quot;%s&quot; (%s)',
                     $smenu->get_title(),
