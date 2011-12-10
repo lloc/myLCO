@@ -159,7 +159,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 
         private $_attributes = array();
 
-        const li = '<li><a href="/wp-admin/admin.php?page=%s"%s>%s</a> |</li>';
+        const li = '<li><a href="/wp-admin/admin.php?page=%s"%s>%s</a> | </li>';
 
         public function __get( $key ) {
             return(
