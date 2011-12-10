@@ -93,7 +93,7 @@ class MyLCOpr extends MyLCOoptions {
             }
         }
         else {
-            add_option( $this->option_name, $this->params, ' ', 'no' );
+            add_option( $this->option_name, $this->params, '', 'no' );
         }
     }
 
