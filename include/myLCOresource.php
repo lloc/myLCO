@@ -23,7 +23,7 @@ class MyLCObookmark {
         $arr = get_option( '_myLCO_' . $this->link_id );
         if ( false === $arr ) {
             $arr = array();
-            add_option( '_myLCO_' . $this->link_id, $arr, ' ', 'no' );
+            add_option( '_myLCO_' . $this->link_id, $arr, '', 'no' );
         }
         return $arr;
     }
