@@ -341,6 +341,7 @@ if ( !class_exists( 'MyLCO' ) ) {
                         }
                         $trow->reset();
                         $trow->hnum               = $i;
+                        $trow->cl                 = $cl;
                         $trow->alternate_class    = ( $backlink->is_details() ? ' class="alternate"' : '' );
                         $trow->backlink_url       = $backlink->get_url();
                         $trow->backlink_pr        = $pr->get( $backlink->get_url() );
