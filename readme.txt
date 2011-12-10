@@ -4,15 +4,13 @@ Donate link: http://www.greenpeace.org/international/
 Tags: myLCO, backlinks, links, check, seo
 Requires at least: 2.8
 Tested up to: 3.3
-Stable tag: 0.7
+Stable tag: 0.8
 
 Maintain and verify the backlinks to your sites pointing from the linking pages of your link-exchange-partners
 
 == Description ==
 
 Now you can maintain and verify the state of the backlinks on the linking pages from your link-exchange-partners.
-
-This version is available in Englisch, German and Italian at the moment.
 
 = Translators =
 
@@ -29,6 +27,10 @@ I hope to find some kind people who will translate the plugin in other languages
 - activate the plugin in your plugins admin page
 
 == Changelog ==
+
+= 0.8 =
+* some improvements how myLCO gets the pr of the linked pages
+* bugfixes
 
 = 0.7 =
 * update of 3th party library: PHP Simple HTML DOM Parser
