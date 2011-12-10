@@ -112,16 +112,15 @@ class MyLCOpr extends MyLCOoptions {
             'pr' => 'N/A',
             'time' => time(),
         );
-        if ( !empty( $key ) ) {
+        if ( '' != $options->api_key ) {
             $err = new MyLCOwebinfoerr;
-            if ( !$err->is_error() && '' != $options->api_key ) {
-                $result = wp_remote_get(
-                    sprintf(
-                        'http://webinfodb.net/a/pr.php?key=%s&url=%s',
-                        $options->api_key,
-                        urlencode( $url )
-                    )
+            if ( !$err->is_error() ) {
+                $url = sprintf(
+                    'http://pr.webinfodb.net/pr.php?key=%s&url=%s',
+                    $options->api_key,
+                    urlencode( $url )
                 );
+                $result = wp_remote_get( $url );
                 if ( !is_wp_error( $result ) ) {
                     if ( '200' == $result['response']['code'] ) {
                         if ( $err->verify( $result['body'] ) ) {
