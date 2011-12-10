@@ -291,7 +291,8 @@ if ( !class_exists( 'MyLCO' ) ) {
                 $tpage = $this->incomplete( $tpage );
             }
             else {
-                $link         = ( isset( $_REQUEST['cl'] ) && isset( $bookmarks[$_REQUEST['cl']] ) ? $bookmarks[$_REQUEST['cl']] : current( $bookmarks ) );
+                $cl           = ( isset( $_REQUEST['cl'] ) && isset( $bookmarks[$_REQUEST['cl']] ) ? $_REQUEST['cl'] : key( $bookmarks ) );
+                $link         = $bookmarks[$cl];
                 $tpage->title = sprintf(
                     '%s &quot;%s&quot; (%s)',
                     $smenu->get_title(),
@@ -318,7 +319,7 @@ if ( !class_exists( 'MyLCO' ) ) {
                 $tform          = new MyLCOtemplate( 'form.php' );
                 $temp           = '';
                 foreach ( $bookmarks as $bookmark ) {
-                    $temp .= $bookmark->option( $_REQUEST['cl'] );
+                    $temp .= $bookmark->option( $cl );
                 }
                 $tform->options = $temp;
                 $temp           = '';
@@ -366,6 +367,7 @@ if ( !class_exists( 'MyLCO' ) ) {
                         $i++;
                         $ipcounter[$backlink->get_ip()] = 1;
                     }
+                    $tbody->cl      = $cl;
                     $tbody->content = $temp;
                     if ( 1 == $i ) {
                         $tbody->tablenav = __( 'There is just 1 backlink inserted so far.', _MYLCO_ );
