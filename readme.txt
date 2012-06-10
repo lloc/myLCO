@@ -19,6 +19,8 @@ Now you can maintain and verify the state of the backlinks on the linking pages 
 
 I hope to find some kind people who will translate the plugin in other languages too.
 
+In addition, I would like to thank [Jürgen Mayer](http://designetage.com/) for making the banner of this plugin.
+
 == Installation ==
 
 - Download the plugin
