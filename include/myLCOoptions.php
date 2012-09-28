@@ -122,13 +122,11 @@ class MyLCOpr extends MyLCOoptions {
                         urlencode( $url )
                     )
                 );
-                if ( !is_wp_error( $result ) ) {
-                    if ( '200' == $result['response']['code'] ) {
-                        if ( $err->verify( $result['body'] ) ) {
-                            $arr['pr'] = (int) $result['body'];
-                            $this->__set( $url, $arr );
-                            $this->update();
-                        }
+                if ( !is_wp_error( $result ) && '200' == $result['response']['code'] ) {
+                    if ( $err->verify( $result['body'] ) ) {
+                        $arr['pr'] = (int) $result['body'];
+                        $this->__set( $url, $arr );
+                        $this->update();
                     }
                 }
             }
@@ -159,20 +157,23 @@ class MyLCOalexa extends MyLCOpr {
             'ranking' => '0', 
             'time' => time(),
         );
-        $xml = simplexml_load_file(
+        $result = wp_remote_get( 
             sprintf(
                 'http://data.alexa.com/data?cli=10&dat=s&url=%s',
                 urlencode( $url )
             )
         );
-        if ( $xml ) {
-            if ( isset( $xml->SD ) ) {
-                foreach ( $xml->SD as $sd ) {
-                    if ( isset( $sd->POPULARITY['TEXT'] ) ) {
-                        $arr['ranking'] = (int) $sd->POPULARITY['TEXT'];
-                        $this->__set( $url, $arr );
-                        $this->update();
-                        break;
+        if ( !is_wp_error( $result ) && '200' == $result['response']['code'] ) {
+            $xml = simplexml_load_string( $result['body'] );
+            if ( $xml ) {
+                if ( isset( $xml->SD ) ) {
+                    foreach ( $xml->SD as $sd ) {
+                        if ( isset( $sd->POPULARITY['TEXT'] ) ) {
+                            $arr['ranking'] = (int) $sd->POPULARITY['TEXT'];
+                            $this->__set( $url, $arr );
+                            $this->update();
+                            break;
+                        }
                     }
                 }
             }
