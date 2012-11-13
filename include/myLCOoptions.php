@@ -194,5 +194,3 @@ class MyLCOalexa extends MyLCOpr {
     }
 
 }
-
-?>

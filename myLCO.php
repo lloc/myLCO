@@ -479,5 +479,3 @@ if ( !class_exists( 'MyLCO' ) ) {
     }
     add_action( 'wp_ajax_mylco_alexa', 'mylco_alexa' );
 }
-
-?>
