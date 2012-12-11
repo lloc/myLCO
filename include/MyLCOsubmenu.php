@@ -1,0 +1,61 @@
+<?php
+
+class MyLCOsubmenu {
+
+	private $arr;
+	private $current;
+
+	const title = '%s &raquo; %s';
+	const ul    = '<ul class="subsubsub">%s<li><a href="/wp-admin/link-manager.php">Link Manager</a></li></ul>';
+
+	public function __construct( $current = 0 ) {
+		$item          = new MyLCOsubmenuitem();
+		$item->text    = __( 'Dashboard', _MYLCO_ );
+		$item->func    = 'main';
+		$this->arr[]   = $item;
+		$item          = new MyLCOsubmenuitem();
+		$item->text    = __( 'Edit', _MYLCO_ );
+		$item->func    = 'edit';
+		$item->action  = 'myLCO_edit';
+		$this->arr[]   = $item;
+		$item          = new MyLCOsubmenuitem();
+		$item->text    = __( 'Options', _MYLCO_ );
+		$item->func    = 'options';
+		$item->action  = 'myLCO_options';
+		$this->arr[]   = $item;
+		$this->current = ( isset( $this->arr[$current] ) ? $current : 0 );
+	}
+
+	public function get() {
+		return $this->arr;
+	}
+
+	public function mainfunc() {
+		return $this->arr[0]->func;
+	}
+
+	public function get_title() {
+		return $this->arr[$this->current]->text;
+	}
+
+	public function get_ul() {
+		$retval = '';
+		$i      = 0;
+		foreach ( $this->arr as $item ) {
+			$retval .= sprintf(
+				MyLCOsubmenuitem::li,
+				$item->get_page_arg(),
+				( $i == $this->current ? ' class="current"' : '' ),
+				$item->text
+			);
+			$i++;
+		}
+		return(
+			sprintf(
+				self::ul, 
+				$retval
+			)
+		);
+	}
+
+}
