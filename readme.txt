@@ -3,8 +3,8 @@ Contributors: realloc
 Donate link: http://www.greenpeace.org/international/
 Tags: myLCO, backlinks, links, check, seo
 Requires at least: 2.8
-Tested up to: 3.3
-Stable tag: 0.8
+Tested up to: 3.5
+Stable tag: 0.8.1
 
 Maintain and verify the backlinks to your sites pointing from the linking pages of your link-exchange-partners
 
@@ -30,12 +30,16 @@ In addition, I would like to thank [Jürgen Mayer](http://designetage.com/) for 
 
 == Changelog ==
 
+= 0.8.1 =
+* link-manager needs activation in WordPress 3.5
+* update of 3th party library: PHP Simple HTML DOM Parser 1.5
+
 = 0.8 =
 * some improvements how myLCO gets the pr of the linked pages
 * bugfixes
 
 = 0.7 =
-* update of 3th party library: PHP Simple HTML DOM Parser
+* update of 3th party library: PHP Simple HTML DOM Parser 1.11
 
 = 0.6 =
 * added translation file for Italian
