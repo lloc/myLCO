@@ -67,9 +67,8 @@ class MyLCObookmark {
 
 	public function check( $arr ) {
 		if ( ! empty($arr) ) {
-			$arr       = ( ! is_array( $arr ) ? array( $arr ) : $arr );
 			$backlinks = $this->get();
-			foreach ( $arr as $url ) {
+			foreach ( (array) $arr as $url ) {
 				if ( isset( $backlinks[ $url ] ) ) {
 					$backlinks[ $url ] = $backlinks[ $url ]->check( $this->link_url );
 				}
@@ -82,9 +81,8 @@ class MyLCObookmark {
 
 	public function delete( $arr ) {
 		if ( ! empty( $arr ) ) {
-			$arr       = ( ! is_array( $arr ) ? array( $arr ) : $arr );
 			$backlinks = $this->get();
-			foreach ( $arr as $url ) {
+			foreach ( (array)$arr as $url ) {
 				unset( $backlinks[ $url ] );
 			}
 			$this->save( $backlinks );
