@@ -1,5 +1,19 @@
 <?php
+/**
+ * MyLCOanchor.php
+ *
+ * @author Dennis Ploetner <re@lloc.de>
+ * @since 0.8.1
+ */
 
+/**
+ * Anchor
+ *
+ * @package MyLCO
+
+ * @property string $rel
+ * @property string $href
+ */
 class MyLCOanchor {
 
 	private $_text;

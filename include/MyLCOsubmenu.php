@@ -13,6 +13,7 @@
 
  * @property string $text
  * @property string $func
+ * @property string $action  
  */
 class MyLCOsubmenu {
 
