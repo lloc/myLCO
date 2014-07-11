@@ -6,7 +6,7 @@ class MyLCObookmark {
 	public $link_name;
 	public $link_url;
 
-	const tr = '<tr><td><a href="/wp-admin/admin.php?page=myLCO_edit&amp;cl=%s" title="%s">%s</td><td>%s</td><td>%s</td><td><a href="%s" title="%s" target="_blank">%s</td><td>%s</td></tr>';
+	const HTML = '<tr><td><a href="/wp-admin/admin.php?page=myLCO_edit&amp;cl=%s" title="%s">%s</td><td>%s</td><td>%s</td><td><a href="%s" title="%s" target="_blank">%s</td><td>%s</td></tr>';
 
 	public function __construct( $obj ) {
 		if ( is_object( $obj ) ) {
@@ -16,11 +16,16 @@ class MyLCObookmark {
 		}
 	}
 
+	public function get_option_name() {
+		return '_myLCO_' . $this->link_id;
+	}
+
 	public function get() {
-		$arr = get_option( '_myLCO_' . $this->link_id );
+		$option_name = $this->get_option_name();
+		$arr = get_option( $option_name );
 		if ( false === $arr ) {
 			$arr = array();
-			add_option( '_myLCO_' . $this->link_id, $arr, '', 'no' );
+			add_option( $option_name, $arr, '', 'no' );
 		}
 		return $arr;
 	}
@@ -28,7 +33,7 @@ class MyLCObookmark {
 	public function save( $arr ) {
 		if ( is_array( $arr ) ) {
 			ksort( $arr );
-			update_option( '_myLCO_' . $this->link_id, $arr );
+			update_option( $this->get_option_name(), $arr );
 			return true;
 		}
 		return false;

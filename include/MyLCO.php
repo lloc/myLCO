@@ -22,7 +22,7 @@ class MyLCO {
 		foreach ( $smenu->get() as $item ) {
 			add_submenu_page(
 				__FILE__,
-				sprintf( MyLCOsubmenu::title, 'myLCO', $item->text ),
+				sprintf( MyLCOsubmenu::TITLE, 'myLCO', $item->text ),
 				$item->text,
 				'administrator',
 				$item->get_page_action(),
@@ -62,7 +62,7 @@ class MyLCO {
 			$alexa->clean();
 			foreach ( $bookmarks as $bookmark ) {
 				$temp .= sprintf(
-					MyLCObookmark::tr,
+					MyLCObookmark::HTML,
 					$bookmark->link_id,
 					__( 'Edit the backlinks of that project...', 'myLCO' ),
 					$bookmark->link_url,

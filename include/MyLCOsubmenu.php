@@ -20,8 +20,8 @@ class MyLCOsubmenu {
 	private $arr;
 	private $current;
 
-	const title = '%s &raquo; %s';
-	const ul    = '<ul class="subsubsub">%s<li><a href="/wp-admin/link-manager.php">Link Manager</a></li></ul>';
+	const TITLE = '%s &raquo; %s';
+	const HTML  = '<ul class="subsubsub">%s<li><a href="/wp-admin/link-manager.php">Link Manager</a></li></ul>';
 
 	public function __construct( $current = 0 ) {
 		$item          = new MyLCOsubmenuitem();
@@ -67,7 +67,7 @@ class MyLCOsubmenu {
 		}
 		return(
 			sprintf(
-				self::ul,
+				self::HTML,
 				$retval
 			)
 		);
