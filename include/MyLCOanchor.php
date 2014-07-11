@@ -24,7 +24,7 @@ class MyLCOanchor {
 	}
 
 	public function __get( $key ) {
-		return( isset( $this->attr[$key] ) ? $this->attr[ $key ] : null );
+		return( isset( $this->attr[ $key ] ) ? $this->attr[ $key ] : null );
 	}
 
 	public function __set( $key, $value ) {

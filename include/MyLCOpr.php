@@ -21,7 +21,7 @@ class MyLCOpr extends MyLCOoptions {
 		$yesterday = time() - 86400;
 		foreach ( $this->params as $key => $value ) {
 			if ( $yesterday > $value['time'] ) {
-				unset( $this->params[$key] );
+				unset( $this->params[ $key ] );
 			}
 		}
 	}
@@ -29,7 +29,7 @@ class MyLCOpr extends MyLCOoptions {
 	public function set( $url ) {
 		$options = new MyLCOoptions();
 		$arr     = array(
-			'pr' => 'N/A',
+			'pr'   => 'N/A',
 			'time' => time(),
 		);
 		if ( '' != $options->api_key ) {

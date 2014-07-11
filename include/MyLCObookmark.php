@@ -44,8 +44,8 @@ class MyLCObookmark {
 		if ( ! empty( $url ) ) {
 			$backlinks = $this->get();
 			$res       = new MyLCOresource( $url );
-			if ( ! isset( $backlinks[$res->get_url()] ) ) {
-				$backlinks[$res->get_url()] = $res->check( $this->link_url );
+			if ( ! isset( $backlinks[ $res->get_url() ] ) ) {
+				$backlinks[ $res->get_url() ] = $res->check( $this->link_url );
 				$this->save( $backlinks );
 				return true;
 			}
@@ -56,8 +56,8 @@ class MyLCObookmark {
 	public function modify( $obj ) {
 		if ( is_object( $obj ) ) {
 			$backlinks = $this->get();
-			if ( isset( $backlinks[$obj->get_url()] ) ) {
-				$backlinks[$obj->get_url()] = $obj;
+			if ( isset( $backlinks[ $obj->get_url() ] ) ) {
+				$backlinks[ $obj->get_url() ] = $obj;
 				$this->save( $backlinks );
 				return true;
 			}
@@ -70,8 +70,8 @@ class MyLCObookmark {
 			$arr       = ( ! is_array( $arr ) ? array( $arr ) : $arr );
 			$backlinks = $this->get();
 			foreach ( $arr as $url ) {
-				if ( isset( $backlinks[$url] ) ) {
-					$backlinks[$url] = $backlinks[$url]->check( $this->link_url );
+				if ( isset( $backlinks[ $url ] ) ) {
+					$backlinks[ $url ] = $backlinks[ $url ->check( $this->link_url );
 				}
 			}
 			$this->save( $backlinks );
@@ -85,7 +85,7 @@ class MyLCObookmark {
 			$arr       = ( ! is_array( $arr ) ? array( $arr ) : $arr );
 			$backlinks = $this->get();
 			foreach ( $arr as $url ) {
-				unset( $backlinks[$url] );
+				unset( $backlinks[ $url ] );
 			}
 			$this->save( $backlinks );
 			return true;

@@ -21,21 +21,21 @@ class MyLCOoptions {
 
 	public function __get( $key ) {
 		return(
-			isset( $this->params[$key] ) ?
-			$this->params[$key] :
+			isset( $this->params[ $key ] ) ?
+			$this->params[ $key ] :
 			null
 		);
 	}
 
 	public function __set( $key, $value ) {
-		$this->params[$key] = $value;
+		$this->params[ $key ] = $value;
 	}
 
 	public function get() {
 		return array(
-			'category_name' => $this->__get( 'category_name' ),
+			'category_name'  => $this->__get( 'category_name' ),
 			'hide_invisible' => $this->__get( 'hide_invisible' ),
-			'api_key' => $this->__get( 'api_key' ),
+			'api_key'        => $this->__get( 'api_key' ),
 		);
 	}
 
