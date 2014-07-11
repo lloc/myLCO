@@ -3,7 +3,7 @@
 <tbody>
 <tr>
 <th scope="row">
-<?php _e ('myLCO link category', _MYLCO_); ?>
+<?php _e ('myLCO link category', 'myLCO'); ?>
 </th>
 <td>
 <input id="category_name" name="category_name" value="{category_name}"/>
@@ -11,7 +11,7 @@
 </tr>
 <tr>
 <th scope="row">
-<?php _e ('API Key (<a href="http://webinfodb.net/api">?</a>)', _MYLCO_); ?>
+<?php _e ('API Key (<a href="http://webinfodb.net/api">?</a>)', 'myLCO'); ?>
 </th>
 <td>
 <input id="api_key" name="api_key" value="{api_key}"/>
@@ -19,7 +19,7 @@
 </tr>
 <tr>
 <th scope="row">
-<?php _e ('Hide private links', _MYLCO_); ?>
+<?php _e ('Hide private links', 'myLCO'); ?>
 </th>
 <td>
 <input type="checkbox" name="hide_invisible" value="1"{hide_invisible}/>
@@ -28,6 +28,6 @@
 </tbody>
 </table>
 <p class="submit">
-<input name="save" value="<?php _e ('Save options', _MYLCO_); ?>" class="button-primary" type="submit"/>
+<input name="save" value="<?php _e ('Save options', 'myLCO'); ?>" class="button-primary" type="submit"/>
 </p>
 </form>

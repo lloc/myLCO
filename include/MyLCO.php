@@ -12,17 +12,17 @@ class MyLCO {
 	}
 
 	public function init() {
-		load_plugin_textdomain( _MYLCO_, false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+		load_plugin_textdomain( 'myLCO', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 		wp_enqueue_script( 'jquery' );
 	}
 
 	public function admin_menu() {
 		$smenu = new MyLCOsubmenu();
-		add_menu_page( _MYLCO_, _MYLCO_, 'administrator', __FILE__, array( $this, $smenu->mainfunc() ) );
+		add_menu_page( 'myLCO', 'myLCO', 'administrator', __FILE__, array( $this, $smenu->mainfunc() ) );
 		foreach ( $smenu->get() as $item ) {
 			add_submenu_page(
 				__FILE__,
-				sprintf( MyLCOsubmenu::title, _MYLCO_, $item->text ),
+				sprintf( MyLCOsubmenu::title, 'myLCO', $item->text ),
 				$item->text,
 				'administrator',
 				$item->get_page_action(),
@@ -64,23 +64,23 @@ class MyLCO {
 				$temp .= sprintf(
 					MyLCObookmark::tr,
 					$bookmark->link_id,
-					__( 'Edit the backlinks of that project...', _MYLCO_ ),
+					__( 'Edit the backlinks of that project...', 'myLCO' ),
 					$bookmark->link_url,
 					$pr->get( $bookmark->link_url ),
 					$alexa->get( $bookmark->link_url ),
 					$bookmark->link_url,
-					__( 'Go to that page...', _MYLCO_ ),
+					__( 'Go to that page...', 'myLCO' ),
 					$bookmark->link_name,
 					count( $bookmark->get() )
 				);
 			}
 			$tcontent->content = $temp;
 			if ( 1 == count( $bookmarks ) ) {
-				$tcontent->tablenav = __( 'There is just 1 URL available for managing backlinks.', _MYLCO_ );
+				$tcontent->tablenav = __( 'There is just 1 URL available for managing backlinks.', 'myLCO' );
 			}
 			else {
 				$tcontent->tablenav = sprintf(
-					__( 'There are %s URLs available for managing backlinks.', _MYLCO_ ),
+					__( 'There are %s URLs available for managing backlinks.', 'myLCO' ),
 					count( $bookmarks )
 				);
 			}
@@ -112,16 +112,16 @@ class MyLCO {
 			if ( !empty( $_REQUEST['action'] ) ) {
 				if ( 'delete' == $_REQUEST['action'] && !empty( $_REQUEST['url'] ) ) {
 					$link->delete( $_REQUEST['url'] );
-					$msg->text = __( 'Selected backlinks have been deleted.', _MYLCO_ );
+					$msg->text = __( 'Selected backlinks have been deleted.', 'myLCO' );
 				}
 				if ( 'check' == $_REQUEST['action'] && !empty( $_REQUEST['url'] ) ) {
 					$link->check( $_REQUEST['url'] );
-					$msg->text = __( 'Selected backlinks have been checked.', _MYLCO_ );
+					$msg->text = __( 'Selected backlinks have been checked.', 'myLCO' );
 				}
 			}
 			if ( !empty( $_REQUEST['backlink'] ) ) {
 				$link->add( $_REQUEST['backlink'] );
-				$msg->text = __( 'A new backlink has been added.', _MYLCO_ );
+				$msg->text = __( 'A new backlink has been added.', 'myLCO' );
 			}
 			$tpage->message = $msg->get();
 			$tform          = new MyLCOtemplate( 'form.php' );
@@ -162,14 +162,14 @@ class MyLCO {
 					$trow->contact_remarks    = $backlink->contact_remarks;
 					if ( '' != $backlink->contact_email ) {
 						$trow->Kemail = sprintf(
-							__( '<a href="mailto:%s">E-mail</a>', _MYLCO_ ),
+							__( '<a href="mailto:%s">E-mail</a>', 'myLCO' ),
 							$backlink->contact_email
 						);
 					} else {
-						$trow->Kemail = __( 'E-mail', _MYLCO_ );
+						$trow->Kemail = __( 'E-mail', 'myLCO' );
 					}
 					$trow->DeleteMessage = sprintf(
-						__( 'Do you really want to delete %s? Please click on OK to continue, or CANCEL if you are not sure!', _MYLCO_ ),
+						__( 'Do you really want to delete %s? Please click on OK to continue, or CANCEL if you are not sure!', 'myLCO' ),
 						$backlink->get_url()
 					);
 					$temp .= $trow->get();
@@ -179,11 +179,11 @@ class MyLCO {
 				$tbody->cl      = $cl;
 				$tbody->content = $temp;
 				if ( 1 == $i ) {
-					$tbody->tablenav = __( 'There is just 1 backlink inserted so far.', _MYLCO_ );
+					$tbody->tablenav = __( 'There is just 1 backlink inserted so far.', 'myLCO' );
 				}
 				else {
 					$tbody->tablenav = sprintf(
-						__( 'There are %s backlinks (with %s different IP addresses) inserted so far.', _MYLCO_ ),
+						__( 'There are %s backlinks (with %s different IP addresses) inserted so far.', 'myLCO' ),
 						$i,
 						count( $ipcounter )
 					);
@@ -192,7 +192,7 @@ class MyLCO {
 			} else {
 				$temp =
 					'<div class="alignleft"><p>' .
-					__( 'OK! Let\'s insert some backlinks to see what\'s going on.', _MYLCO_ ) .
+					__( 'OK! Let\'s insert some backlinks to see what\'s going on.', 'myLCO' ) .
 					'</p></div>';
 			}
 			$tpage->content = $tform->get() . $temp;
@@ -212,10 +212,10 @@ class MyLCO {
 				$this->options->api_key  = $_REQUEST['api_key'];
 				$this->options->hide_invisible = ( isset( $_REQUEST['hide_invisible'] ) ? 1 : 0 );
 				$this->options->update();
-				$msg->text = __( 'Options succesfully saved.', _MYLCO_ );
+				$msg->text = __( 'Options succesfully saved.', 'myLCO' );
 				$msg->css  = 'updated';
 			} else {
-				$msg->text = __( 'The name of a link category which can be used by myLCO is required!', _MYLCO_ );
+				$msg->text = __( 'The name of a link category which can be used by myLCO is required!', 'myLCO' );
 				$msg->css  = 'error';
 			}
 		}
@@ -229,18 +229,18 @@ class MyLCO {
 	}
 
 	public function incomplete( $template ) {
-		$template->title   = __( 'Further actions required', _MYLCO_ );
+		$template->title   = __( 'Further actions required', 'myLCO' );
 		$template->message = '';
 		$str               = '';
 		if ( $this->options->hide_invisible == 1 ) {
-			$str = __( ' or all links are private and you have decided to hide such links', _MYLCO_ );
+			$str = __( ' or all links are private and you have decided to hide such links', 'myLCO' );
 		}
 		$template->content =
 			'<div class="alignleft"><p>' .
 			sprintf(
-				__( 'There are no links in the category <strong>%s</strong>%s. Please use the <a href="/wp-admin/link-manager.php">WP Link-Manager</a> to add some links to this category or retry with other <a href="%s?page=myLCO_options">options</a>!', _MYLCO_ ),
-				$this->options->category_name, 
-				$str, 
+				__( 'There are no links in the category <strong>%s</strong>%s. Please use the <a href="/wp-admin/link-manager.php">WP Link-Manager</a> to add some links to this category or retry with other <a href="%s?page=myLCO_options">options</a>!', 'myLCO' ),
+				$this->options->category_name,
+				$str,
 				$_SERVER['PHP_SELF']
 			) .
 			'</p></div>';

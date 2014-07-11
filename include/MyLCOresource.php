@@ -75,7 +75,7 @@ class MyLCOresource {
 				$this->link  = null;
 				$this->error = $this->redirect = $this->nofollow = false;
 				$result      = wp_remote_get(
-					$this->url, 
+					$this->url,
 					array( 'redirection' => 0 )
 				);
 				if ( is_wp_error( $result ) ) {
@@ -131,7 +131,7 @@ class MyLCOresource {
 	}
 
 	public function get_url() {
-		return $this->url;    
+		return $this->url;
 	}
 
 	public function get_ip() {

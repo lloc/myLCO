@@ -15,7 +15,7 @@ License: GPL2
 Copyright 2010  Dennis Ploetner  (email : re@lloc.de)
 
 This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
+it under the terms of the GNU General Public License, version 2, as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,
@@ -29,11 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 if ( !class_exists( 'MyLCO' ) ) {
-	define( '_MYLCO_', 'myLCO' );
 	if ( ! defined( 'MYLCO_PLUGIN_PATH' ) ) {
 		define( 'MYLCO_PLUGIN_PATH', plugin_basename( __FILE__ ) );
 	}
-	add_filter( 'pre_option_link_manager_enabled', '__return_true' ); 
+	add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 	/**
 	 * The Autoloader does all the magic when it comes to include a file
@@ -46,14 +45,14 @@ if ( !class_exists( 'MyLCO' ) ) {
 		 * @param string $cls
 		 */
 		public static function load( $cls ) {
-			if ( 'MyLCO' == substr( $cls, 0, 5 ) ) 
+			if ( 'MyLCO' == substr( $cls, 0, 5 ) )
 				require_once dirname( __FILE__ ) . '/includes/' . $cls . '.php';
 		}
 
 	}
 
 	/**
-	 * The autoload-stack could be inactive so the function will return 
+	 * The autoload-stack could be inactive so the function will return
 	 * false
 	 */
 	if ( in_array( '__autoload', (array) spl_autoload_functions() ) ) {
@@ -62,7 +61,8 @@ if ( !class_exists( 'MyLCO' ) ) {
 	spl_autoload_register( array( 'MyLCOautoloader', 'load' ) );
 
 	function mylco_install() {
-		$lco = new MyLCO();
+		$options = new MyLCOoptions();
+		$lco     = new MyLCO( $options );
 		$lco->options->update();
 	}
 	if ( function_exists( 'register_activation_hook' ) ) {

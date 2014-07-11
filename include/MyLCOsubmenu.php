@@ -24,16 +24,16 @@ class MyLCOsubmenu {
 
 	public function __construct( $current = 0 ) {
 		$item          = new MyLCOsubmenuitem();
-		$item->text    = __( 'Dashboard', _MYLCO_ );
+		$item->text    = __( 'Dashboard', 'myLCO' );
 		$item->func    = 'main';
 		$this->arr[]   = $item;
 		$item          = new MyLCOsubmenuitem();
-		$item->text    = __( 'Edit', _MYLCO_ );
+		$item->text    = __( 'Edit', 'myLCO' );
 		$item->func    = 'edit';
 		$item->action  = 'myLCO_edit';
 		$this->arr[]   = $item;
 		$item          = new MyLCOsubmenuitem();
-		$item->text    = __( 'Options', _MYLCO_ );
+		$item->text    = __( 'Options', 'myLCO' );
 		$item->func    = 'options';
 		$item->action  = 'myLCO_options';
 		$this->arr[]   = $item;
@@ -66,7 +66,7 @@ class MyLCOsubmenu {
 		}
 		return(
 			sprintf(
-				self::ul, 
+				self::ul,
 				$retval
 			)
 		);
