@@ -36,7 +36,7 @@ class MyLCO {
 			$this->bookmarks = array();
 			$bookmarks       = get_bookmarks( $this->options->get() );
 			foreach ( $bookmarks as $bookmark ) {
-				$this->bookmarks[$bookmark->link_id] = new MyLCObookmark( $bookmark );
+				$this->bookmarks[ $bookmark->link_id ] = new MyLCObookmark( $bookmark );
 			}
 		}
 		return $this->bookmarks;
@@ -44,20 +44,19 @@ class MyLCO {
 
 	public function main() {
 		require_once dirname( __FILE__ ) . '/include/myLCOresource.php';
-		$tpage       = new MyLCOtemplate( 'page.php' );
-		$smenu       = new MyLCOsubmenu();
-		$tpage->menu = $smenu->get_ul();
-		$bookmarks   = $this->get_bookmarks();
+		$tpage = new MyLCOtemplate( 'page.php' );
+		$smenu = new MyLCOsubmenu();
+		$tpage->set( 'menu', $smenu->get_ul() );
+		$bookmarks = $this->get_bookmarks();
 		if ( empty( $bookmarks ) ) {
 			$tpage = $this->incomplete( $tpage );
 		}
 		else {
-			$tpage->title   = $smenu->get_title();
-			$tpage->message = '';
-			$tcontent       = new MyLCOtemplate( 'main.php' );
-			$temp           = '';
-			$pr             = new MyLCOpr();
-			$alexa          = new MyLCOalexa();
+			$tpage->set( 'title', $smenu->get_title() )->set( 'message', '' );
+			$tcontent = new MyLCOtemplate( 'main.php' );
+			$temp     = '';
+			$pr       = new MyLCOpr();
+			$alexa    = new MyLCOalexa();
 			$pr->clean();
 			$alexa->clean();
 			foreach ( $bookmarks as $bookmark ) {
@@ -74,17 +73,20 @@ class MyLCO {
 					count( $bookmark->get() )
 				);
 			}
-			$tcontent->content = $temp;
+			$tcontent->set( 'content', $temp );
 			if ( 1 == count( $bookmarks ) ) {
-				$tcontent->tablenav = __( 'There is just 1 URL available for managing backlinks.', 'myLCO' );
+				$tcontent->set( 'tablenav', __( 'There is just 1 URL available for managing backlinks.', 'myLCO' ) );
 			}
 			else {
-				$tcontent->tablenav = sprintf(
-					__( 'There are %s URLs available for managing backlinks.', 'myLCO' ),
-					count( $bookmarks )
+				$tcontent->set(
+					'tablenav',
+					sprintf(
+						__( 'There are %s URLs available for managing backlinks.', 'myLCO' ),
+						count( $bookmarks )
+					)
 				);
 			}
-			$tpage->content = $tcontent->get();
+			$tpage->set( 'content', $tcontent->get() );
 		}
 		echo $tpage->get();
 	}
