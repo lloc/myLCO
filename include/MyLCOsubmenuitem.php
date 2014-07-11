@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * MyLCOsubmenuitem.php
+ *
+ * @author Dennis Ploetner <re@lloc.de>
+ * @since 0.8.1
+ */
+
+/**
+ * Submenuitem
+ *
+ * @package MyLCO
+ */
 class MyLCOsubmenuitem {
 
 	private $_attributes = array();
@@ -8,14 +20,14 @@ class MyLCOsubmenuitem {
 
 	public function __get( $key ) {
 		return(
-			isset( $this->_attributes[$key] ) ?
-			$this->_attributes[$key] :
+			isset( $this->_attributes[ $key ] ) ?
+			$this->_attributes[ $key ] :
 			null
 		);
 	}
 
 	public function __set( $key, $value ) {
-		$this->_attributes[$key] = $value;
+		$this->_attributes[ $key ] = $value;
 	}
 
 	public function get_page_action() {

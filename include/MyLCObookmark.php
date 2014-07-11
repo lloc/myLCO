@@ -71,7 +71,7 @@ class MyLCObookmark {
 			$backlinks = $this->get();
 			foreach ( $arr as $url ) {
 				if ( isset( $backlinks[ $url ] ) ) {
-					$backlinks[ $url ] = $backlinks[ $url ->check( $this->link_url );
+					$backlinks[ $url ] = $backlinks[ $url ]->check( $this->link_url );
 				}
 			}
 			$this->save( $backlinks );
