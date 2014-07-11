@@ -241,7 +241,7 @@ class MyLCO {
 				__( 'There are no links in the category <strong>%s</strong>%s. Please use the <a href="/wp-admin/link-manager.php">WP Link-Manager</a> to add some links to this category or retry with other <a href="%s?page=myLCO_options">options</a>!', 'myLCO' ),
 				$this->options->category_name,
 				$str,
-				$_SERVER['PHP_SELF']
+				admin_url()
 			) .
 			'</p></div>';
 		return $template;

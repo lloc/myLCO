@@ -1,4 +1,4 @@
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>?page=myLCO_options" method="post">
+<form action="<?php echo admin_url(); ?>?page=myLCO_options" method="post">
 <table class="form-table">
 <tbody>
 <tr>
