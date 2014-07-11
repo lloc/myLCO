@@ -8,8 +8,9 @@
 /**
  * Check if simple_html_dom is already known
  */
-if ( !class_exists( 'simple_html_dom' ) )
-	require_once dirname( __FILE__ ) . '/simple_html_dom.php';
+if ( ! class_exists( 'simple_html_dom' ) ) {
+	require_once MYLCO_PLUGIN_PATH . '/lib/simple_html_dom.php';
+}
 
 /**
  * Basic resource

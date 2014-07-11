@@ -3,9 +3,10 @@
 class MyLCO {
 
 	public $options;
+	public $bookmarks;
 
-	public function __construct() {
-		$this->options = new MyLCOoptions();
+	public function __construct( MyLCOoptions $options ) {
+		$this->options = $options;
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 	}
@@ -31,7 +32,7 @@ class MyLCO {
 	}
 
 	public function get_bookmarks() {
-		if ( !isset( $this->bookmarks ) ) {
+		if ( ! is_array( $this->bookmarks ) ) {
 			$this->bookmarks = array();
 			$bookmarks       = get_bookmarks( $this->options->get() );
 			foreach ( $bookmarks as $bookmark ) {

@@ -1,5 +1,19 @@
 <?php
+/**
+ * MyLCOsubmenu.php
+ *
+ * @author Dennis Ploetner <re@lloc.de>
+ * @since 0.8.1
+ */
 
+/**
+ * Submenu
+ *
+ * @package MyLCO
+
+ * @property string $text
+ * @property string $func
+ */
 class MyLCOsubmenu {
 
 	private $arr;

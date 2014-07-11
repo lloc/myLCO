@@ -30,6 +30,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 if ( !class_exists( 'MyLCO' ) ) {
 	define( '_MYLCO_', 'myLCO' );
+	if ( ! defined( 'MYLCO_PLUGIN_PATH' ) ) {
+		define( 'MYLCO_PLUGIN_PATH', plugin_basename( __FILE__ ) );
+	}
 	add_filter( 'pre_option_link_manager_enabled', '__return_true' ); 
 
 	/**
@@ -53,20 +56,18 @@ if ( !class_exists( 'MyLCO' ) ) {
 	 * The autoload-stack could be inactive so the function will return 
 	 * false
 	 */
-	if ( in_array( '__autoload', (array) spl_autoload_functions() ) )
+	if ( in_array( '__autoload', (array) spl_autoload_functions() ) ) {
 		spl_autoload_register( '__autoload' );
+	}
 	spl_autoload_register( array( 'MyLCOautoloader', 'load' ) );
-
-	if ( function_exists( 'register_activation_hook' ) )
-		register_activation_hook( __FILE__, 'mylco_install' );
 
 	function mylco_install() {
 		$lco = new MyLCO();
 		$lco->options->update();
 	}
-
-	if ( function_exists( 'register_uninstall_hook' ) )
-		register_uninstall_hook( __FILE__, 'mylco_uninstall' );
+	if ( function_exists( 'register_activation_hook' ) ) {
+		register_activation_hook( __FILE__, 'mylco_install' );
+	}
 
 	function mylco_uninstall() {
 		global $wpdb;
@@ -75,6 +76,9 @@ if ( !class_exists( 'MyLCO' ) ) {
 				"DELETE FROM {$wpdb->options} WHERE option_name like '_myLCO%'"
 			)
 		);
+	}
+	if ( function_exists( 'register_uninstall_hook' ) ) {
+		register_uninstall_hook( __FILE__, 'mylco_uninstall' );
 	}
 
 	function mylco_pagerank() {
@@ -91,7 +95,9 @@ if ( !class_exists( 'MyLCO' ) ) {
 	}
 	add_action( 'wp_ajax_mylco_alexa', 'mylco_alexa' );
 
-	if ( is_admin() )
-		$lco = new MyLCO();
+	if ( is_admin() ) {
+		$options = new MyLCOoptions();
+		$lco     = new MyLCO( $options );
+	}
 
 }
