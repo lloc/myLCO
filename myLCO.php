@@ -28,7 +28,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( !class_exists( 'MyLCO' ) ) {
+if ( ! class_exists( 'MyLCO' ) ) {
 	if ( ! defined( 'MYLCO_PLUGIN_PATH' ) ) {
 		define( 'MYLCO_PLUGIN_PATH', plugin_basename( __FILE__ ) );
 	}
@@ -45,8 +45,9 @@ if ( !class_exists( 'MyLCO' ) ) {
 		 * @param string $cls
 		 */
 		public static function load( $cls ) {
-			if ( 'MyLCO' == substr( $cls, 0, 5 ) )
+			if ( 'MyLCO' == substr( $cls, 0, 5 ) ) {
 				require_once dirname( __FILE__ ) . '/includes/' . $cls . '.php';
+			}
 		}
 
 	}

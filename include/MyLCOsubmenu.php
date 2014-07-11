@@ -57,7 +57,7 @@ class MyLCOsubmenu {
 		$i      = 0;
 		foreach ( $this->arr as $item ) {
 			$retval .= sprintf(
-				MyLCOsubmenuitem::li,
+				MyLCOsubmenuitem::HTML,
 				$item->get_page_arg(),
 				( $i == $this->current ? ' class="current"' : '' ),
 				$item->text

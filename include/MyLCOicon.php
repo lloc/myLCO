@@ -4,7 +4,7 @@ class MyLCOicon {
 
 	private $path;
 
-	const html = '<img src="%s" alt="%s" title="%s" />';
+	const HTML = '<img src="%s" alt="%s" title="%s" />';
 
 	public function __construct( $plugindir ) {
 		$this->path = '/' . $plugindir . '/icons/';
@@ -49,7 +49,7 @@ class MyLCOicon {
 				}
 			}
 		}
-		return sprintf( self::html, $this->path . $src, $text, $text );
+		return sprintf( self::HTML, $this->path . $src, $text, $text );
 	}
 
 }

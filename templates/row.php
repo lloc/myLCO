@@ -10,7 +10,7 @@
 <div id="hidden_{hnum}" class="hidden">
 <fieldset>
 <p>
-<label for="cn_{hnum}"><?php echo __ ('Partner', 'myLCO' ); ?></label><br/>
+<label for="cn_{hnum}"><?php _e('Partner', 'myLCO' ); ?></label><br/>
 <input class="regular-text" type="text" id="cn_{hnum}" name="contact_name[{hnum}]" value="{contact_name}"/><br/>
 <label for="ce_{hnum}">{Kemail}</label><br/>
 <input class="regular-text" type="text" id="ce_{hnum}" name="contact_email[{hnum}]" value="{contact_email}"/><br/>

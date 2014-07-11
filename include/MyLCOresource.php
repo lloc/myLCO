@@ -42,11 +42,11 @@ class MyLCOresource {
 	}
 
 	public function __get( $key ) {
-		return( isset( $this->contact[$key] ) ? $this->contact[$key] : null );
+		return( isset( $this->contact[ $key ] ) ? $this->contact[$key] : null );
 	}
 
 	public function __set( $key, $value ) {
-		$this->contact[$key] = $value;
+		$this->contact[ $key ] = $value;
 	}
 
 	public function is_error() {
