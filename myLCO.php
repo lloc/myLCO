@@ -83,14 +83,16 @@ if ( !class_exists( 'MyLCO' ) ) {
 
 	function mylco_pagerank() {
 		$gpr = new MyLCOpr();
-		echo $gpr->set( $_POST['url'] );
+		$url = filter_input( INPUT_POST, 'url', FILTER_SANITIZE_URL );
+		echo $gpr->set( $url );
 		die();
 	}
 	add_action( 'wp_ajax_mylco_pagerank', 'mylco_pagerank' );
 
 	function mylco_alexa() {
 		$alx = new MyLCOalexa();
-		echo $alx->set( $_POST['url'] );
+		$url = filter_input( INPUT_POST, 'url', FILTER_SANITIZE_URL );
+		echo $alx->set( $url );
 		die();
 	}
 	add_action( 'wp_ajax_mylco_alexa', 'mylco_alexa' );

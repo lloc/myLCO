@@ -34,10 +34,10 @@ class MyLCOresource {
 
 	public function __construct( $str ) {
 		$result = parse_url( $str );
-		if ( !$result ) {
+		if ( ! $result ) {
 			$this->error = true;
 		} else {
-			$this->url = ( !isset( $result['scheme'] ) ? 'http://' : '' ) . $str;
+			$this->url = ( ! isset( $result['scheme'] ) ? 'http://' : '' ) . $str;
 		}
 	}
 
@@ -62,13 +62,13 @@ class MyLCOresource {
 	}
 
 	public function is_details() {
-		return( !empty( $this->contact ) ? true : false );
+		return( ! empty( $this->contact ) ? true : false );
 	}
 
 	public function check( $url ) {
 		$this->checkdate = time();
 		$host            = parse_url( $this->url, PHP_URL_HOST );
-		if ( !empty( $host ) ) {
+		if ( ! empty( $host ) ) {
 			$ip = gethostbyname( $host );
 			if ( $host != $ip ) {
 				$this->ip    = $ip;
@@ -80,14 +80,14 @@ class MyLCOresource {
 				);
 				if ( is_wp_error( $result ) ) {
 					$result = wp_remote_get( $this->url );
-					if ( !is_wp_error( $result ) ) {
+					if ( ! is_wp_error( $result ) ) {
 						$this->redirect = true;
 					}
 					else {
 						$this->error = true;
 					}
 				}
-				if ( !is_wp_error( $result ) ) {
+				if ( ! is_wp_error( $result ) ) {
 					$this->response = $result['response']['code'];
 					if ( '200' != $this->response ) {
 						$this->error = true;

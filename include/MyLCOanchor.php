@@ -10,11 +10,11 @@ class MyLCOanchor {
 	}
 
 	public function __get( $key ) {
-		return( isset ($this->attr[$key]) ? $this->attr[$key] : null );
+		return( isset( $this->attr[$key] ) ? $this->attr[ $key ] : null );
 	}
 
 	public function __set( $key, $value ) {
-		$this->attr[$key] = $this->utf8( $value );
+		$this->attr[ $key ] = $this->utf8( $value );
 	}
 
 	public function utf8( $str ) {
@@ -25,7 +25,7 @@ class MyLCOanchor {
 		$html = str_get_html( $this->_text );
 		if ( false != $html ) {
 			$ret = $html->find( 'img', 0 );
-			if ( !is_null( $ret ) ) {
+			if ( ! is_null( $ret ) ) {
 				return 'image' . ( $ret->alt ? ' alt: ' . $ret->alt : '' );
 			}
 		}
@@ -34,10 +34,11 @@ class MyLCOanchor {
 
 	public function is_nofollow() {
 		$rel = $this->__get( 'rel' );
-		if ( !is_null( $rel ) ) {
+		if ( ! is_null( $rel ) ) {
 			$arr = explode( ' ', $rel );
-			if ( in_array( 'nofollow', $arr ) )
+			if ( in_array( 'nofollow', $arr ) ) {
 				return true;
+			}
 		}
 		return false;
 	}

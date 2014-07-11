@@ -15,7 +15,7 @@ class MyLCOalexa extends MyLCOpr {
 				urlencode( $url )
 			)
 		);
-		if ( !is_wp_error( $result ) && '200' == $result['response']['code'] ) {
+		if ( ! is_wp_error( $result ) && '200' == $result['response']['code'] ) {
 			$xml = simplexml_load_string( $result['body'] );
 			if ( $xml ) {
 				if ( isset( $xml->SD ) ) {
