@@ -35,7 +35,7 @@ class MyLCOpr extends MyLCOoptions {
 		if ( '' != $options->api_key ) {
 			$err = new MyLCOwebinfoerr;
 			if ( !$err->is_error() ) {
-				$result = wp_remote_get( 
+				$result = wp_remote_get(
 					sprintf(
 						'http://pr.webinfodb.net/pr.php?key=%s&url=%s',
 						$options->api_key,

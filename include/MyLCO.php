@@ -109,17 +109,17 @@ class MyLCO {
 			);
 			$msg          = new MyLCOmessage();
 			$msg->css     = 'updated';
-			if ( !empty( $_REQUEST['action'] ) ) {
-				if ( 'delete' == $_REQUEST['action'] && !empty( $_REQUEST['url'] ) ) {
+			if ( ! empty( $_REQUEST['action'] ) ) {
+				if ( 'delete' == $_REQUEST['action'] && ! empty( $_REQUEST['url'] ) ) {
 					$link->delete( $_REQUEST['url'] );
 					$msg->text = __( 'Selected backlinks have been deleted.', 'myLCO' );
 				}
-				if ( 'check' == $_REQUEST['action'] && !empty( $_REQUEST['url'] ) ) {
+				if ( 'check' == $_REQUEST['action'] && ! empty( $_REQUEST['url'] ) ) {
 					$link->check( $_REQUEST['url'] );
 					$msg->text = __( 'Selected backlinks have been checked.', 'myLCO' );
 				}
 			}
-			if ( !empty( $_REQUEST['backlink'] ) ) {
+			if ( ! empty( $_REQUEST['backlink'] ) ) {
 				$link->add( $_REQUEST['backlink'] );
 				$msg->text = __( 'A new backlink has been added.', 'myLCO' );
 			}
@@ -132,7 +132,7 @@ class MyLCO {
 			$tform->options = $temp;
 			$temp           = '';
 			$backlinks      = $link->get();
-			if ( !empty( $backlinks ) ) {
+			if ( ! empty( $backlinks ) ) {
 				$tbody     = new MyLCOtemplate( 'edit.php' );
 				$ipcounter = array();
 				$i         = 0;
@@ -207,7 +207,7 @@ class MyLCO {
 		$tpage->title = $smenu->get_title();
 		$msg          = new MyLCOmessage();
 		if ( isset( $_REQUEST['save'] ) ) {
-			if ( !empty( $_REQUEST['category_name'] ) ) {
+			if ( ! empty( $_REQUEST['category_name'] ) ) {
 				$this->options->category_name  = $_REQUEST['category_name'];
 				$this->options->api_key  = $_REQUEST['api_key'];
 				$this->options->hide_invisible = ( isset( $_REQUEST['hide_invisible'] ) ? 1 : 0 );
