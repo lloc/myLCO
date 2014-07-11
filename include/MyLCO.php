@@ -201,30 +201,33 @@ class MyLCO {
 	}
 
 	public function options() {
-		$tpage        = new MyLCOtemplate( 'page.php' );
-		$smenu        = new MyLCOsubmenu( 2 );
-		$tpage->menu  = $smenu->get_ul();
-		$tpage->title = $smenu->get_title();
-		$msg          = new MyLCOmessage();
+		$tpage = new MyLCOtemplate( 'page.php' );
+		$smenu = new MyLCOsubmenu( 2 );
+		$tpage->set( 'menu', $smenu->get_ul() )->set( 'title', $smenu->get_title() );
+
+		$msg = new MyLCOmessage();
 		if ( isset( $_REQUEST['save'] ) ) {
 			if ( ! empty( $_REQUEST['category_name'] ) ) {
 				$this->options->category_name  = $_REQUEST['category_name'];
 				$this->options->api_key  = $_REQUEST['api_key'];
 				$this->options->hide_invisible = ( isset( $_REQUEST['hide_invisible'] ) ? 1 : 0 );
 				$this->options->update();
-				$msg->text = __( 'Options succesfully saved.', 'myLCO' );
-				$msg->css  = 'updated';
+
+				$msg->set( 'text', __( 'Options succesfully saved.', 'myLCO' ) )
+					->set( 'css', 'updated' );
 			} else {
-				$msg->text = __( 'The name of a link category which can be used by myLCO is required!', 'myLCO' );
-				$msg->css  = 'error';
+				$msg->set( 'text', __( 'The name of a link category which can be used by myLCO is required!', 'myLCO' ) )
+					->set( 'css', 'error' );
 			}
 		}
-		$tpage->message = $msg->get();
-		$tcontent                 = new MyLCOtemplate( 'options.php' );
-		$tcontent->category_name  = $this->options->category_name;
-		$tcontent->api_key        = $this->options->api_key;
-		$tcontent->hide_invisible = ( $this->options->hide_invisible == 1 ? ' checked="checked"' : '' );
-		$tpage->content           = $tcontent->get();
+		$tpage->set( 'message', $msg->get() );
+
+		$tcontent = new MyLCOtemplate( 'options.php' );
+		$tcontent->set( 'category_name', $this->options->category_name )
+			->set( 'api_key', $this->options->api_key )
+			->set( 'hide_invisible', ( $this->options->hide_invisible == 1 ? ' checked="checked"' : '' ) );
+
+		$tpage->set( 'content', $tcontent->get() );
 		echo $tpage->get();
 	}
 

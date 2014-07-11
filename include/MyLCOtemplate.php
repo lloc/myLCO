@@ -20,15 +20,16 @@ class MyLCOtemplate {
 	}
 
 	public function __get( $key ) {
-		return(
-			isset ($this->params[$key]) ?
-			$this->params[$key] :
-			null
-		);
+		return( isset( $this->params[ $key ] ) ? $this->params[ $key ] : null );
 	}
 
 	public function __set( $key, $value ) {
-		$this->params[$key] = $value;
+		$this->set( $key, $value );
+	}
+
+	public function set( $key, $value ) {
+		$this->params[ $key ] = $value;
+		return $this;
 	}
 
 	public function reset() {

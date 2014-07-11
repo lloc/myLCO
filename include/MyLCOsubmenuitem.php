@@ -10,6 +10,9 @@
 /**
  * Submenuitem
  *
+ * @property string $text  
+ * @property string $func  
+ * @property string $action  
  * @package MyLCO
  */
 class MyLCOsubmenuitem {
