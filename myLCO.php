@@ -56,8 +56,8 @@ if ( !class_exists( 'MyLCO' ) ) {
 
 		public function __get( $key ) {
 			return(
-				isset ($this->params[ $key ]) ?
-				$this->params[ $key  :
+				isset( $this->params[ $key ] ) ?
+				$this->params[ $key ] :
 				null
 			);
 		}
