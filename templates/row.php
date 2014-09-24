@@ -4,8 +4,8 @@
 <a href="{backlink_url}" title="<?php _e ('Visit linking page...', _MYLCO_); ?>" target="_blank">{backlink_url}</a>
 <div class="row-actions">
 <span class="inline"><a href="javascript:void(0);" onclick="document.getElementById('hidden_{hnum}').style.display = 'block';"><?php _e ('Details', _MYLCO_); ?></a> | </span>
-<span class="edit"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?page=myLCO_edit&amp;cl={cl}&amp;action=check&url={backlink_url}"><?php _e ('Check', _MYLCO_); ?></a> | </span>
-<span class="trash"><a class="submitdelete" href="<?php echo $_SERVER['PHP_SELF']; ?>?page=myLCO_edit&amp;cl={cl}&amp;action=delete&url={backlink_url}" onclick="if (confirm ('{DeleteMessage}')) { return true; } return false;"><?php _e ('Delete', _MYLCO_); ?></a></span>
+<span class="edit"><a href="<?php echo admin_url( 'admin.php?page=myLCO_edit' ); ?>&amp;cl={cl}&amp;action=check&url={backlink_url}"><?php _e ('Check', _MYLCO_); ?></a> | </span>
+<span class="trash"><a class="submitdelete" href="<?php echo admin_url( 'admin.php?page=myLCO_edit' ); ?>&amp;cl={cl}&amp;action=delete&url={backlink_url}" onclick="if (confirm ('{DeleteMessage}')) { return true; } return false;"><?php _e ('Delete', _MYLCO_); ?></a></span>
 </div>
 <div id="hidden_{hnum}" class="hidden">
 <fieldset>

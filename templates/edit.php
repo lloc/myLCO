@@ -1,4 +1,4 @@
-<form action="<?php echo $_SERVER['PHP_SELF'] . '?page=myLCO_edit&amp;cl='; ?>{cl}" name="edit" method="post">
+<form action="<?php echo admin_url( 'admin.php?page=myLCO_edit' ); ?>&amp;cl={cl}" name="edit" method="post">
 <input type="hidden" name="action" value=""/>
 <table class="widefat">
 <thead>
