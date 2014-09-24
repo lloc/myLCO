@@ -173,7 +173,7 @@ class MyLCOresource {
 						$this->error = true;
 					}
 				}
-				if ( !is_wp_error( $result ) ) {
+				if ( ! is_wp_error( $result ) ) {
 					$this->response = $result['response']['code'];
 					if ( '200' != $this->response ) {
 						$this->error = true;
@@ -262,7 +262,7 @@ class MyLCOanchor {
 		$html = str_get_html( $this->_text );
 		if ( false != $html ) {
 			$ret = $html->find( 'img', 0 );
-			if ( !is_null( $ret ) ) {
+			if ( ! is_null( $ret ) ) {
 				return 'image' . ( $ret->alt ? ' alt: ' . $ret->alt : '' );
 			}
 		}
@@ -271,7 +271,7 @@ class MyLCOanchor {
 
 	public function is_nofollow() {
 		$rel = $this->__get( 'rel' );
-		if ( !is_null( $rel ) ) {
+		if ( ! is_null( $rel ) ) {
 			$arr = explode( ' ', $rel );
 			if ( in_array( 'nofollow', $arr ) )
 				return true;

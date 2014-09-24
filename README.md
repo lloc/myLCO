@@ -10,6 +10,8 @@ In addition, I would like to thank [Jürgen Mayer](http://designetage.com/) for 
 
 *  German (de_DE) - [Dennis Ploetner](http://www.urlaub-und-reisen.net/)
 *  Italian (it_IT) - [Antonella Cucinelli](http://www.freely.de/)
+*  Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
+
 
 ## Installation
 

@@ -16,7 +16,7 @@ Now you can maintain and verify the state of the backlinks on the linking pages 
 
 * German (de_DE) - [Dennis Ploetner](http://www.urlaub-und-reisen.net/)
 * Italian (it_IT) - [Antonella Cucinelli](http://www.freely.de/)
-* Serbo-Croatian () - [Borisa Djuraskovic](http://www.webhostinghub.com/)
+* Serbo-Croatian (sr_RS) - [Borisa Djuraskovic](http://www.webhostinghub.com/)
  
 I hope to find some kind people who will translate the plugin in other languages too.
 
