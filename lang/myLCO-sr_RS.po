@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: myLCO v0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-24 16:29+0100\n"
+"POT-Creation-Date: 2014-09-24 16:28+0100\n"
 "PO-Revision-Date: 2014-09-24 16:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,64 +22,64 @@ msgstr ""
 # @ myLCO
 #: myLCO.php:110
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "Komandna tabla"
 
 # @ myLCO
 #: myLCO.php:114
 msgid "Edit"
-msgstr "Bearbeiten"
+msgstr "Uredi"
 
 # @ myLCO
 #: myLCO.php:119
 msgid "Options"
-msgstr "Einstellungen"
+msgstr "Opcije"
 
 # @ myLCO
 #: myLCO.php:265
 msgid "Edit the backlinks of that project..."
-msgstr "Die Backlinks dieses Projektes bearbeiten..."
+msgstr "Uradi dolazne linkove tog projekta..."
 
 # @ myLCO
 #: myLCO.php:270
 msgid "Go to that page..."
-msgstr "Diese Seite besuchen..."
+msgstr "Idi na stranicu…."
 
 # @ myLCO
 #: myLCO.php:277
 msgid "There is just 1 URL available for managing backlinks."
-msgstr "Bisher ist nur 1 URL in der Backlink-Verwaltung verfügbar."
+msgstr "Samo je 1 link raspoloživ za upravljanje dolaznim linkovima."
 
 # @ myLCO
 #: myLCO.php:281
 #, php-format
 msgid "There are %s URLs available for managing backlinks."
-msgstr "Insgesamt stehen %s URLs in der Backlink-Verwaltung zur Verfügung."
+msgstr "Imaraspoloživih  %s  URL-a za upravljanje dolaznim linkovima."
 
 # @ myLCO
 #: myLCO.php:313
 msgid "Selected backlinks have been deleted."
-msgstr "Die ausgewählten Backlinks wurden gelöscht."
+msgstr "Selektovani dolazni linkovi su obrisani"
 
 # @ myLCO
 #: myLCO.php:317
 msgid "Selected backlinks have been checked."
-msgstr "Die ausgewählten Backlinks wurden überprüft."
+msgstr "Selektovani dolazni linkovi su štiklirani"
 
 # @ myLCO
 #: myLCO.php:322
 msgid "A new backlink has been added."
-msgstr "Ein neuer Backlink wurde hinzugefügt."
+msgstr "Novi dolazni link je dodat"
 
 # @ myLCO
 #: myLCO.php:363
 #, php-format
 msgid "<a href=\"mailto:%s\">E-mail</a>"
-msgstr "<a href=\"mailto:%s\">E-Mail</a>"
+msgstr "<a href=\"mailto:%s\">E-mail</a>"
 
 # @ myLCO
 #: myLCO.php:367
 msgid "E-mail"
-msgstr "E-Mail"
+msgstr "E-mail"
 
 # @ myLCO
 #: myLCO.php:370
@@ -88,50 +88,45 @@ msgid ""
 "Do you really want to delete %s? Please click on OK to continue, or CANCEL "
 "if you are not sure!"
 msgstr ""
-"Soll %s wirklich gelöscht werden? Klicke zur Bestätigung auf OK oder auf "
-"ABBRECHEN, falls Du Dir nicht sicher bist!"
+"Da li zaista hoćete da delete %s?  Molim vas, kliknite na OK ako želite da "
+"nastavite. Ako niste sigurni, kliknite na OTKAŽI."
 
 # @ myLCO
 #: myLCO.php:380
 msgid "There is just 1 backlink inserted so far."
-msgstr "Bisher wurde nur 1 Backlink eingetragen."
+msgstr "Do sada je unet samo 1 dolazni link."
 
 # @ myLCO
 #: myLCO.php:384
 #, php-format
 msgid ""
 "There are %s backlinks (with %s different IP addresses) inserted so far."
-msgstr ""
-"Insgesamt wurden %s Backlinks (mit %s verschiedenen IP-Addresses) angelegt."
+msgstr "Do sada je uneto  %s backlinks  (sa %s different IP adresa)."
 
 # @ myLCO
 #: myLCO.php:393
 msgid "OK! Let's insert some backlinks to see what's going on."
-msgstr "OK! Lass uns ein paar Links einfügen, um zu sehen, was los ist."
+msgstr "Ok! Hajde da unesemo dolazne linkove da vidimo šta se dešava!"
 
 # @ myLCO
 #: myLCO.php:413
 msgid "Options succesfully saved."
-msgstr "Die Einstellungen wurden erfolgreich gespeichert."
+msgstr "Opcije uspešno sačuvane."
 
 # @ myLCO
 #: myLCO.php:416
 msgid "The name of a link category which can be used by myLCO is required!"
-msgstr ""
-"Der Name einer Link-Kategorie, welche von myLCO verwendet werden kann, ist "
-"erforderlich."
+msgstr "Potreban je naziv kategorije linka koju može da koristi myLCO."
 
 # @ myLCO
 #: myLCO.php:430
 msgid "Further actions required"
-msgstr "Weitere Aktionen sind erforderlich"
+msgstr "Sledeće aktivnosti su neophodne:"
 
 # @ myLCO
 #: myLCO.php:434
 msgid " or all links are private and you have decided to hide such links"
-msgstr ""
-" oder alle Links in der Kategorie sind auf privat gesetzt und Du hast in den "
-"Einstellungen festgelegt, diese zu verstecken"
+msgstr "Linkovi su privatni ili ste odlučili da ih sakrijete"
 
 # @ myLCO
 #: myLCO.php:439
@@ -141,35 +136,35 @@ msgid ""
 "href=\"%s\">WP Link-Manager</a> to add some links to this category or retry "
 "with other <a href=\"%s\">options</a>!"
 msgstr ""
-"Es befinden sich keine Links in der Kategorie <strong>%s</strong>%s. Bitte "
-"geh zum <a href=\"%s\">WP Link-Manager</a>, um dieser Kategorie Links "
-"zuzuordnen, oder versuche es mit anderen <a href=\"%s\">Einstellungen</a>!"
+"Nema linkova u kategoriji <strong>%s</strong>%s. Molimo vas, koristite the "
+"<a href=\"%s\">WP Link-Manager</a> da biste ovoj kategoriji dodali neke "
+"linkove ili pokušajte sa drugom kategorijom <a href=\"%s\">options</a>!"
 
 #: include/myLCOresource.php:229
 msgctxt "timezone date format"
 msgid "Y-m-d G:i:s"
-msgstr ""
+msgstr "Y-m-d G:i:s"
 
 # @ myLCO
 #: include/myLCOresource.php:300
 #, php-format
 msgid "Could not load the page. Error: %s"
-msgstr "Die Seite konnte nicht geladen werden. Fehler: %s"
+msgstr "Stranica nije mogla da se učita.  Error: %s"
 
 # @ myLCO
 #: include/myLCOresource.php:303
 msgid "Could not load the page."
-msgstr "Die Seite konnte nicht geladen werden."
+msgstr "Stranica nije mogla da se učita."
 
 # @ myLCO
 #: include/myLCOresource.php:309
 msgid "URL redirection!"
-msgstr "URL wird umgeleitet!"
+msgstr "URL preusmeravanje!"
 
 # @ myLCO
 #: include/myLCOresource.php:314
 msgid "Page has defined meta robots nofollow!"
-msgstr "Das Meta-Tag robots enthält den Wert nofollow!"
+msgstr "Stranica definiše meta-robote, nofollow!"
 
 # @ myLCO
 #: include/myLCOresource.php:320
@@ -180,17 +175,17 @@ msgstr "Nofollow!"
 #: include/myLCOresource.php:324
 #, php-format
 msgid "Link found (%s)!"
-msgstr "Link gefunden (%s)!"
+msgstr "Link found (%s)!"
 
 # @ myLCO
 #: include/myLCOresource.php:329
 msgid "Link not found!"
-msgstr "Link nicht gefunden!"
+msgstr "Link nije pronađen!"
 
 # @ myLCO
 #: templates/edit.php:7 templates/edit.php:18
 msgid "Backlink URL"
-msgstr "Backlink-URL"
+msgstr "URL dolaznog linka"
 
 # @ myLCO
 #: templates/edit.php:8 templates/edit.php:19 templates/main.php:5
@@ -202,7 +197,7 @@ msgstr "PageRank"
 #: templates/edit.php:9 templates/edit.php:20 templates/main.php:7
 #: templates/main.php:16
 msgid "Link text"
-msgstr "Linktext"
+msgstr "tekst linka"
 
 # @ myLCO
 #: templates/edit.php:10 templates/edit.php:21
@@ -217,17 +212,17 @@ msgstr "Status"
 # @ myLCO
 #: templates/edit.php:12 templates/edit.php:23
 msgid "Last checkdate"
-msgstr "Geprüft am "
+msgstr "Poslednji datum provere"
 
 # @ myLCO
 #: templates/edit.php:31
 msgid "Check selected URLs"
-msgstr "Ausgewählte URLs prüfen"
+msgstr "Proveri selektovane URL-e"
 
 # @ myLCO
 #: templates/edit.php:32
 msgid "Delete selected URLs"
-msgstr "Ausgewählte URLs löschen"
+msgstr "Obriši selektovane URL-e"
 
 # @ myLCO
 #: templates/edit.php:32
@@ -235,18 +230,18 @@ msgid ""
 "Are you sure you want to delete the selected URLs? Please click on OK to "
 "continue, or CANCEL if you are not sure!"
 msgstr ""
-"Sollen die ausgewählten URLs wirklich gelöscht werden? Klicke zur "
-"Bestätigung auf OK oder auf ABBRECHEN, falls Du Dir nicht sicher bist!"
+"Jeste li sigurni da hoćete da obrišete odabrani URL? Molim vas, kliknite na "
+"OK ako želite da nastavite. Ako niste sigurni, kliknite na OTKAŽI."
 
 # @ myLCO
 #: templates/form.php:6
 msgid "Change selection"
-msgstr "Auswahl ändern"
+msgstr "Izmeni selekciju"
 
 # @ myLCO
 #: templates/form.php:8
 msgid "Insert backlink"
-msgstr "Backlink einfügen"
+msgstr "Inesi dolazni link"
 
 # @ myLCO
 #: templates/main.php:4 templates/main.php:13
@@ -261,12 +256,12 @@ msgstr "Alexa"
 # @ myLCO
 #: templates/main.php:8 templates/main.php:17
 msgid "Backlinks"
-msgstr "Backlinks"
+msgstr "Dolazni linkovi"
 
 # @ myLCO
 #: templates/options.php:6
 msgid "myLCO link category"
-msgstr "Link-Kategorie"
+msgstr "kategorija myLCO linka"
 
 #: templates/options.php:14
 msgid "API Key (<a href=\"http://webinfodb.net/api\">?</a>)"
@@ -275,32 +270,32 @@ msgstr ""
 # @ myLCO
 #: templates/options.php:22
 msgid "Hide private links"
-msgstr "Private Links verstecken"
+msgstr "Sakrij privatne linkove"
 
 # @ myLCO
 #: templates/options.php:31
 msgid "Save options"
-msgstr "Einstellungen speichern"
+msgstr "Sačuvaj opcije"
 
 # @ myLCO
 #: templates/row.php:4
 msgid "Visit linking page..."
-msgstr "Diese Seite besuchen..."
+msgstr "Poseti povezanu stranicu "
 
 # @ myLCO
 #: templates/row.php:6
 msgid "Details"
-msgstr "Details"
+msgstr "Detalji"
 
 # @ myLCO
 #: templates/row.php:7
 msgid "Check"
-msgstr "Prüfen"
+msgstr "Štikliraj"
 
 # @ myLCO
 #: templates/row.php:8
 msgid "Delete"
-msgstr "Löschen"
+msgstr "Obriši"
 
 # @ myLCO
 #: templates/row.php:13
@@ -310,14 +305,14 @@ msgstr "Partner"
 # @ myLCO
 #: templates/row.php:17
 msgid "Remarks / Backlink"
-msgstr "Bemerkungen / Gegenlink"
+msgstr "Napomene/Dolazni link"
 
 # @ myLCO
 #: templates/row.php:21
 msgid "Save"
-msgstr "Speichern"
+msgstr "Sačuvaj"
 
 # @ myLCO
 #: templates/row.php:22
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Otkaži"
