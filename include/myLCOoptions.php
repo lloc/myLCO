@@ -21,14 +21,14 @@ class MyLCOoptions {
 
 	public function __get( $key ) {
 		return(
-			isset( $this->params[$key] ) ?
-			$this->params[$key] :
+			isset( $this->params[ $key ] ) ?
+			$this->params[ $key ] :
 			null
 		);
 	}
 
 	public function __set( $key, $value ) {
-		$this->params[$key] = $value;
+		$this->params[ $key ] = $value;
 	}
 
 	public function get( $url ) {
@@ -101,7 +101,7 @@ class MyLCOpr extends MyLCOoptions {
 		$yesterday = time() - 86400;
 		foreach ( $this->params as $key => $value ) {
 			if ( $yesterday > $value['time'] ) {
-				unset( $this->params[$key] );
+				unset( $this->params[ $key ] );
 			}
 		}
 	}

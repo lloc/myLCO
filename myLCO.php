@@ -56,14 +56,14 @@ if ( !class_exists( 'MyLCO' ) ) {
 
 		public function __get( $key ) {
 			return(
-				isset ($this->params[$key]) ?
-				$this->params[$key] :
+				isset ($this->params[ $key ]) ?
+				$this->params[ $key  :
 				null
 			);
 		}
 
 		public function __set( $key, $value ) {
-			$this->params[$key] = $value;
+			$this->params[ $key ] = $value;
 		}
 	
 		public function reset() {
@@ -120,7 +120,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 			$item->func    = 'options';
 			$item->action  = 'myLCO_options';
 			$this->arr[]   = $item;
-			$this->current = ( isset( $this->arr[$current] ) ? $current : 0 );
+			$this->current = ( isset( $this->arr[ $current ] ) ? $current : 0 );
 		}
 
 		public function get() {
@@ -132,7 +132,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 		}
 
 		public function get_title() {
-			return $this->arr[$this->current]->text;
+			return $this->arr[ $this->current ]->text;
 		}
 
 		public function get_ul() {
@@ -169,14 +169,14 @@ if ( !class_exists( 'MyLCO' ) ) {
 
 		public function __get( $key ) {
 			return(
-				isset( $this->_attributes[$key] ) ?
-				$this->_attributes[$key] :
+				isset( $this->_attributes[ $key ] ) ?
+				$this->_attributes[ $key ] :
 				null
 			);
 		}
 
 		public function __set( $key, $value ) {
-			$this->_attributes[$key] = $value;
+			$this->_attributes[ $key ] = $value;
 		}
 
 		public function get_page_action() {
@@ -234,7 +234,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 				$this->bookmarks = array();
 				$bookmarks       = get_bookmarks( $this->options->get() );
 				foreach ( $bookmarks as $bookmark ) {
-					$this->bookmarks[$bookmark->link_id] = new MyLCObookmark( $bookmark );
+					$this->bookmarks[ $bookmark->link_id ] = new MyLCObookmark( $bookmark );
 				}
 			}
 			return $this->bookmarks;
@@ -297,8 +297,8 @@ if ( !class_exists( 'MyLCO' ) ) {
 				$tpage = $this->incomplete( $tpage );
 			}
 			else {
-				$cl           = ( isset( $_REQUEST['cl'] ) && isset( $bookmarks[$_REQUEST['cl']] ) ? $_REQUEST['cl'] : key( $bookmarks ) );
-				$link         = $bookmarks[$cl];
+				$cl           = ( isset( $_REQUEST['cl'] ) && isset( $bookmarks[ $_REQUEST['cl'] ] ) ? $_REQUEST['cl'] : key( $bookmarks ) );
+				$link         = $bookmarks[ $cl ];
 				$tpage->title = sprintf(
 					'%s &quot;%s&quot; (%s)',
 					$smenu->get_title(),
@@ -340,9 +340,9 @@ if ( !class_exists( 'MyLCO' ) ) {
 					$pr->clean();
 					foreach ( $backlinks as $backlink ) {
 						if ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'contact[' . $i . ']' ) {
-							$backlink->contact_name    = $_REQUEST['contact_name'][$i];
-							$backlink->contact_email   = $_REQUEST['contact_email'][$i];
-							$backlink->contact_remarks = $_REQUEST['contact_remarks'][$i];
+							$backlink->contact_name    = $_REQUEST['contact_name'][ $i ];
+							$backlink->contact_email   = $_REQUEST['contact_email'][ $i ];
+							$backlink->contact_remarks = $_REQUEST['contact_remarks'][ $i ];
 							$link->modify( $backlink );
 						}
 						$trow->reset();
@@ -372,7 +372,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 						);
 						$temp .= $trow->get();
 						$i++;
-						$ipcounter[$backlink->get_ip()] = 1;
+						$ipcounter[ $backlink->get_ip() ] = 1;
 					}
 					$tbody->cl      = $cl;
 					$tbody->content = $temp;

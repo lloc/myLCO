@@ -1,5 +1,5 @@
 filter:
-    excluded_paths: [lib/*]
+    excluded_paths: [include/simple_html_dom.php]
 
 tools:
     js_hint: true
