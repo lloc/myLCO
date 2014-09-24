@@ -30,6 +30,10 @@ In addition, I would like to thank [Jürgen Mayer](http://designetage.com/) for 
 
 == Changelog ==
 
+= 0.8.2 =
+* Strict standards
+* Bugfix: Menu links
+
 = 0.8.1 =
 * link-manager needs activation in WordPress 3.5
 * update of 3th party library: PHP Simple HTML DOM Parser 1.5

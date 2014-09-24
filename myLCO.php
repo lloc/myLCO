@@ -103,7 +103,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 		private $current;
 
 		const title = '%s &raquo; %s';
-		const ul    = '<ul class="subsubsub">%s<li><a href="/wp-admin/link-manager.php">Link Manager</a></li></ul>';
+		const ul    = '<ul class="subsubsub">%s<li><a href="%s">Link Manager</a></li></ul>';
 
 		public function __construct( $current = 0 ) {
 			$item          = new MyLCOsubmenuitem();
@@ -153,7 +153,8 @@ if ( !class_exists( 'MyLCO' ) ) {
 			return(
 				sprintf(
 					self::ul, 
-					$retval
+					$retval,
+					admin_url( 'link-manager.php' )
 				)
 			);
 		}
@@ -435,10 +436,11 @@ if ( !class_exists( 'MyLCO' ) ) {
 			$template->content =
 				'<div class="alignleft"><p>' .
 				sprintf(
-					__( 'There are no links in the category <strong>%s</strong>%s. Please use the <a href="/wp-admin/link-manager.php">WP Link-Manager</a> to add some links to this category or retry with other <a href="%s?page=myLCO_options">options</a>!', _MYLCO_ ),
+					__( 'There are no links in the category <strong>%s</strong>%s. Please use the <a href="%s">WP Link-Manager</a> to add some links to this category or retry with other <a href="%s">options</a>!', _MYLCO_ ),
 					$this->options->category_name, 
-					$str, 
-					$_SERVER['PHP_SELF']
+					$str,
+					admin_url( 'link-manager.php' ),
+					admin_url( 'admin.php?page=myLCO_options' )
 				) .
 				'</p></div>';
 			return $template;

@@ -1,4 +1,4 @@
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>?page=myLCO_edit" method="post">
+<form action="<?php echo admin_url( 'admin.php?page=myLCO_edit' ); ?>" method="post">
 <div class="tablenav">
 <select name="cl">
 {options}
