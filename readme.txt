@@ -4,7 +4,7 @@ Donate link: http://www.greenpeace.org/international/
 Tags: myLCO, backlinks, links, check, seo
 Requires at least: 2.8
 Tested up to: 3.5
-Stable tag: 0.8.1
+Stable tag: 0.8.2
 
 Maintain and verify the backlinks to your sites pointing from the linking pages of your link-exchange-partners
 
@@ -16,10 +16,11 @@ Now you can maintain and verify the state of the backlinks on the linking pages 
 
 * German (de_DE) - [Dennis Ploetner](http://www.urlaub-und-reisen.net/)
 * Italian (it_IT) - [Antonella Cucinelli](http://www.freely.de/)
-
+* Serbo-Croatian () - [Borisa Djuraskovic](http://www.webhostinghub.com/)
+ 
 I hope to find some kind people who will translate the plugin in other languages too.
 
-In addition, I would like to thank [Jürgen Mayer](http://designetage.com/) for making the banner of this plugin.
+In addition, I would like to thank [Jürgen Mayer](http://blog.jrmayer.co/) for making the banner of this plugin.
 
 == Installation ==
 
@@ -33,6 +34,7 @@ In addition, I would like to thank [Jürgen Mayer](http://designetage.com/) for 
 = 0.8.2 =
 * Strict standards
 * Bugfix: Menu links
+* New language: Serbo-Croatian
 
 = 0.8.1 =
 * link-manager needs activation in WordPress 3.5
