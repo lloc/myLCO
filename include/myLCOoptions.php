@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @property api_key
+ * @author realloc
+ */
 class MyLCOoptions {
 
 	protected $option_name = '_myLCO';
@@ -114,7 +118,7 @@ class MyLCOpr extends MyLCOoptions {
 		);
 		if ( '' != $options->api_key ) {
 			$err = new MyLCOwebinfoerr;
-			if ( !$err->is_error() ) {
+			if ( ! $err->is_error() ) {
 				$result = wp_remote_get( 
 					sprintf(
 						'http://pr.webinfodb.net/pr.php?key=%s&url=%s',
@@ -122,7 +126,7 @@ class MyLCOpr extends MyLCOoptions {
 						urlencode( $url )
 					)
 				);
-				if ( !is_wp_error( $result ) && '200' == $result['response']['code'] ) {
+				if ( ! is_wp_error( $result ) && '200' == $result['response']['code'] ) {
 					if ( $err->verify( $result['body'] ) ) {
 						$arr['pr'] = (int) $result['body'];
 						$this->__set( $url, $arr );
@@ -163,7 +167,7 @@ class MyLCOalexa extends MyLCOpr {
 				urlencode( $url )
 			)
 		);
-		if ( !is_wp_error( $result ) && '200' == $result['response']['code'] ) {
+		if ( ! is_wp_error( $result ) && '200' == $result['response']['code'] ) {
 			$xml = simplexml_load_string( $result['body'] );
 			if ( $xml ) {
 				if ( isset( $xml->SD ) ) {

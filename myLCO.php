@@ -28,7 +28,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( !class_exists( 'MyLCO' ) ) {
+if ( ! class_exists( 'MyLCO' ) ) {
 	add_filter( 'pre_option_link_manager_enabled', '__return_true' ); 
 
 	define( '_MYLCO_', 'myLCO' );
@@ -230,7 +230,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 		}
 
 		public function get_bookmarks() {
-			if ( !isset( $this->bookmarks ) ) {
+			if ( ! isset( $this->bookmarks ) ) {
 				$this->bookmarks = array();
 				$bookmarks       = get_bookmarks( $this->options->get() );
 				foreach ( $bookmarks as $bookmark ) {
@@ -307,17 +307,17 @@ if ( !class_exists( 'MyLCO' ) ) {
 				);
 				$msg          = new MyLCOmessage();
 				$msg->css     = 'updated';
-				if ( !empty( $_REQUEST['action'] ) ) {
-					if ( 'delete' == $_REQUEST['action'] && !empty( $_REQUEST['url'] ) ) {
+				if ( ! empty( $_REQUEST['action'] ) ) {
+					if ( 'delete' == $_REQUEST['action'] && ! empty( $_REQUEST['url'] ) ) {
 						$link->delete( $_REQUEST['url'] );
 						$msg->text = __( 'Selected backlinks have been deleted.', _MYLCO_ );
 					}
-					if ( 'check' == $_REQUEST['action'] && !empty( $_REQUEST['url'] ) ) {
+					if ( 'check' == $_REQUEST['action'] && ! empty( $_REQUEST['url'] ) ) {
 						$link->check( $_REQUEST['url'] );
 						$msg->text = __( 'Selected backlinks have been checked.', _MYLCO_ );
 					}
 				}
-				if ( !empty( $_REQUEST['backlink'] ) ) {
+				if ( ! empty( $_REQUEST['backlink'] ) ) {
 					$link->add( $_REQUEST['backlink'] );
 					$msg->text = __( 'A new backlink has been added.', _MYLCO_ );
 				}
@@ -330,7 +330,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 				$tform->options = $temp;
 				$temp           = '';
 				$backlinks      = $link->get();
-				if ( !empty( $backlinks ) ) {
+				if ( ! empty( $backlinks ) ) {
 					$tbody     = new MyLCOtemplate( 'edit.php' );
 					$ipcounter = array();
 					$i         = 0;
@@ -405,7 +405,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 			$tpage->title = $smenu->get_title();
 			$msg          = new MyLCOmessage();
 			if ( isset( $_REQUEST['save'] ) ) {
-				if ( !empty( $_REQUEST['category_name'] ) ) {
+				if ( ! empty( $_REQUEST['category_name'] ) ) {
 					$this->options->category_name  = $_REQUEST['category_name'];
 					$this->options->api_key  = $_REQUEST['api_key'];
 					$this->options->hide_invisible = ( isset( $_REQUEST['hide_invisible'] ) ? 1 : 0 );

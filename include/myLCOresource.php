@@ -1,6 +1,6 @@
 <?php
 
-if ( !class_exists( 'simple_html_dom' ) )
+if ( ! class_exists( 'simple_html_dom' ) )
 	require_once dirname( __FILE__ ) . '/simple_html_dom.php';
 
 class MyLCObookmark {
@@ -39,10 +39,10 @@ class MyLCObookmark {
 
 	public function add( $url ) {
 		$url = trim( $url );
-		if ( !empty( $url ) ) {
+		if ( ! empty( $url ) ) {
 			$backlinks = $this->get();
 			$res       = new MyLCOresource( $url );
-			if ( !isset( $backlinks[ $res->get_url() ] ) ) {
+			if ( ! isset( $backlinks[ $res->get_url() ] ) ) {
 				$backlinks[ $res->get_url() ] = $res->check( $this->link_url );
 				$this->save( $backlinks );
 				return true;
@@ -64,8 +64,8 @@ class MyLCObookmark {
 	}
 
 	public function check( $arr ) {
-		if ( !empty($arr) ) {
-			$arr       = ( !is_array( $arr ) ? array( $arr ) : $arr );
+		if ( ! empty($arr) ) {
+			$arr       = ( ! is_array( $arr ) ? array( $arr ) : $arr );
 			$backlinks = $this->get();
 			foreach ( $arr as $url ) {
 				if ( isset( $backlinks[ $url ] ) ) {
@@ -79,8 +79,8 @@ class MyLCObookmark {
 	}
 
 	public function delete( $arr ) {
-		if ( !empty( $arr ) ) {
-			$arr       = ( !is_array( $arr ) ? array( $arr ) : $arr );
+		if ( ! empty( $arr ) ) {
+			$arr       = ( ! is_array( $arr ) ? array( $arr ) : $arr );
 			$backlinks = $this->get();
 			foreach ( $arr as $url ) {
 				unset( $backlinks[ $url ] );
@@ -120,10 +120,10 @@ class MyLCOresource {
 
 	public function __construct( $str ) {
 		$result = parse_url( $str );
-		if ( !$result ) {
+		if ( ! $result ) {
 			$this->error = true;
 		} else {
-			$this->url = ( !isset( $result['scheme'] ) ? 'http://' : '' ) . $str;
+			$this->url = ( ! isset( $result['scheme'] ) ? 'http://' : '' ) . $str;
 		}
 	}
 
@@ -148,13 +148,13 @@ class MyLCOresource {
 	}
 
 	public function is_details() {
-		return( !empty( $this->contact ) ? true : false );
+		return( ! empty( $this->contact ) ? true : false );
 	}
 
 	public function check( $url ) {
 		$this->checkdate = time();
 		$host            = parse_url( $this->url, PHP_URL_HOST );
-		if ( !empty( $host ) ) {
+		if ( ! empty( $host ) ) {
 			$ip = gethostbyname( $host );
 			if ( $host != $ip ) {
 				$this->ip    = $ip;
@@ -166,7 +166,7 @@ class MyLCOresource {
 				);
 				if ( is_wp_error( $result ) ) {
 					$result = wp_remote_get( $this->url );
-					if ( !is_wp_error( $result ) ) {
+					if ( ! is_wp_error( $result ) ) {
 						$this->redirect = true;
 					}
 					else {
@@ -232,6 +232,11 @@ class MyLCOresource {
 
 }
 
+/**
+ * @property href
+ * @property rel
+ * @author realloc
+ */
 class MyLCOanchor {
 
 	private $_text;
