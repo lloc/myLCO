@@ -4,7 +4,7 @@
 Plugin Name: myLCO
 Plugin URI: http://lloc.de/wp-plugin-mylco
 Description: Maintain and verify the backlinks to your sites pointing from the linking pages of your link-exchange-partners
-Version: 0.8.1
+Version: 0.8.2
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: myLCO
@@ -139,12 +139,15 @@ if ( !class_exists( 'MyLCO' ) ) {
 			$retval = '';
 			$i      = 0;
 			foreach ( $this->arr as $item ) {
+				$path = sprintf( 'admin.php?page=%s', $item->get_page_arg() );
+
 				$retval .= sprintf(
 					MyLCOsubmenuitem::li,
-					$item->get_page_arg(),
+					admin_url( $path ),
 					( $i == $this->current ? ' class="current"' : '' ),
 					$item->text
 				);
+
 				$i++;
 			}
 			return(
@@ -161,7 +164,7 @@ if ( !class_exists( 'MyLCO' ) ) {
 
 		private $_attributes = array();
 
-		const li = '<li><a href="/wp-admin/admin.php?page=%s"%s>%s</a> | </li>';
+		const li = '<li><a href="%s"%s>%s</a> | </li>';
 
 		public function __get( $key ) {
 			return(

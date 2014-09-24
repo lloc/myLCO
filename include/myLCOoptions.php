@@ -31,7 +31,7 @@ class MyLCOoptions {
 		$this->params[$key] = $value;
 	}
 
-	public function get() {
+	public function get( $url ) {
 		return array(
 			'category_name' => $this->__get( 'category_name' ),
 			'hide_invisible' => $this->__get( 'hide_invisible' ),
